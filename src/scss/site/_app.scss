@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+* {
+   box-sizing: border-box;
+}
+
+html {
+   // font-family: 'Open Sans', sans-serif;
+   font-family: 'PT Mono', monospace;
+}
+
+body {
+   margin: 0;
+}
+#root {
+   position: relative;
+   width: 100%;
+   height: 100vh;
+   background-image: url('./assets/svg/skew-01.svg');
+   background-size: cover;
+   background-repeat: no-repeat;
+   overflow-x: hidden;
+
+   .doc-img {
+      position: absolute;
+      z-index: 1;
+      right: -50px;
+      bottom: 100px;
+      text-align: center;
+      img {
+         width: 60vw;
+         height: 70vh;
+      }
+   }
+}
+
+#search {
+   all: unset;
+   background: #fff;
+   width: 50vw;
+   height: 2rem;
+   border-radius: 5px;
+   padding: 5px 10px;
+   box-shadow: 1px 1px 5px 0px #222;
+   &:focus {
+      box-shadow: 1px 1px 10px 0px #ccc;
+   }
+}
+.slide-in-left-enter {
+   transform: translateX(-100%);
+}
+
+.slide-in-left-enter-active {
+   transform: translateX(0);
+   opacity: 1;
+   transition: all 200ms;
+}
+
+.slide-in-left-exit {
+   transform: translateX(0%);
+   opacity: 1;
+}
+
+.slide-in-left-exit-active {
+   transform: translateX(-100%);
+   opacity: 0;
+   transition: all 200ms;
+}
+
+.center {
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

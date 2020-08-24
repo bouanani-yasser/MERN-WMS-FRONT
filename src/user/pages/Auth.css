@@ -1,0 +1,45 @@
+.authentication__header {
+   color: white;
+   text-align: center;
+}
+
+.authentication {
+   position: absolute;
+   top: 20%;
+   left: 50%;
+   transform: translate(0%, 0%);
+   width: 90%;
+   max-width: 25rem;
+   min-height: 300px;
+   margin: 7rem auto;
+   align-content: center;
+   padding: 0 20px;
+   border-radius: 5px;
+   box-shadow: 1px 1px 5px 0px #aaa;
+}
+.authentication form {
+   position: absolute;
+   width: 85%;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.authentication label {
+   padding: 5px;
+   margin: 5px;
+   position: relative;
+   top: -40px;
+   font-weight: bold;
+   left: 0;
+   color: #222;
+}
+
+.authentication .active {
+   border-top: 2px solid #03907c;
+   color: #03907c;
+}
+
+.authentication form {
+   margin-bottom: 1rem;
+}

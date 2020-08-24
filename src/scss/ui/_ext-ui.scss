@@ -1,0 +1,11 @@
+.skew-back {
+   z-index: 2;
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+   img {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+   }
+}
