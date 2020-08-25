@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 
 import Button from './Button';
+import FileStructure from '../../../home/components/FileStructure';
 import './FileUpload.css';
-
 const FileUpload = (props) => {
    const [file, setFile] = useState();
    const [previewUrl, setPreviewUrl] = useState();
@@ -36,12 +36,12 @@ const FileUpload = (props) => {
       props.onInput(props.id, pickedFile, fileIsValid);
    };
 
-   const pickImageHandler = () => {
+   const pickFileHandler = async () => {
       filePickerRef.current.click();
    };
 
    return (
-      <div className="form-control">
+      <div className="upload-modal">
          <form
             className="form-upload"
             encType="multipart/form-data"
@@ -56,16 +56,22 @@ const FileUpload = (props) => {
                // accept=".jpg,.png,.jpeg"
                onChange={pickedHandler}
             />
-            <div>
-               {previewUrl && <p>{file.name}</p>}
-               {!previewUrl && <p>Pick a File.</p>}
-
-               <Button type="button" onClick={pickImageHandler}>
-                  PICK IMAGE
+            <main>
+               <Button type="button" onClick={pickFileHandler}>
+                  PICK FILE
                </Button>
-            </div>
-            <Button center type="submit" disabled={!isValid}>
-               Upload
+               {!previewUrl ? (
+                  <p>Please pick a file .</p>
+               ) : (
+                  <p style={{ fontWeight: 'bold' }}>{file.name}</p>
+               )}
+               <div className="description">
+                  <h3>Description</h3>
+                  <FileStructure />
+               </div>
+            </main>
+            <Button type="submit" disabled={!props.isValid}>
+               UPLOAD
             </Button>
          </form>
       </div>
