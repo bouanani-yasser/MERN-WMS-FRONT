@@ -43,7 +43,11 @@ const NavLinks = (props) => {
             )}
             {auth.isLoggedIn && (
                <li>
-                  <button className="logout" onClick={auth.logout}>
+                  <button
+                     className="btn btn-outline-danger"
+                     style={{ fontWeight: 'bold' }}
+                     onClick={auth.logout}
+                  >
                      LOGOUT
                   </button>
                </li>

@@ -73,10 +73,8 @@ const Input = (props) => {
 
    return (
       <div
-         className={`form-control ${
-            !inputState.isValid &&
-            inputState.isTouched &&
-            'form-control--invalid'
+         className={`control ${
+            !inputState.isValid && inputState.isTouched && 'control--invalid'
          }`}
       >
          {element}

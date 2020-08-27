@@ -18,7 +18,7 @@
    font-weight: bold;
 }
 
-.auth-links a {
+.auth-links li a {
    text-decoration: none;
    color: #fff;
    background-color: #03907c;
@@ -31,6 +31,7 @@
    color: #03907c;
    padding: 6px 10px;
    border: 1px solid #03907c;
+   text-decoration: none;
 }
 .nav-links a {
    color: #292929;
@@ -42,9 +43,11 @@
 .nav-links a:active,
 .nav-links a.active {
    border-bottom: 2px solid #fff;
+   text-decoration: none;
+   color: #fff;
 }
 
-.nav-links button {
+.nav-links .button {
    cursor: pointer;
    color: #292929;
    padding: 0.5rem;
@@ -58,6 +61,12 @@
 .nav-links button:hover,
 .nav-links button:active {
    color: #292929;
+}
+
+.nav-links button a:hover,
+.nav-links button a:active {
+   color: #292929;
+   text-decoration: none;
 }
 
 @media (min-width: 768px) {
@@ -84,21 +93,5 @@
    .nav-links a {
       color: #fff;
       text-decoration: none;
-   }
-
-   .auth-links button {
-      cursor: pointer;
-      border: 2px solid #03907c;
-      border-radius: 5px;
-      color: #03907c;
-      background: #fff;
-      padding: 10px 40px;
-      font-weight: bold;
-   }
-
-   .auth-links button:hover,
-   .auth-links button:active {
-      color: #fff;
-      background: #03907c;
    }
 }

@@ -1,20 +1,20 @@
-.form-control {
+.control {
    margin: 1rem 0;
 }
 
-.form-control label,
-.form-control input,
-.form-control textarea {
+.control label,
+.control input,
+.control textarea {
    display: block;
 }
 
-.form-control label {
+.control label {
    font-weight: bold;
    margin-bottom: 0.5rem;
 }
 
-.form-control input,
-.form-control textarea {
+.control input,
+.control textarea {
    width: 100%;
    height: 2.5rem;
    font: inherit;
@@ -24,20 +24,20 @@
    padding: 0.15rem 0.25rem;
 }
 
-.form-control input:focus,
-.form-control textarea:focus {
+.control input:focus,
+.control textarea:focus {
    outline: none;
    background: #ebebeb;
    border-color: #03907c;
 }
 
-.form-control--invalid label,
-.form-control--invalid p {
+.control--invalid label,
+.control--invalid p {
    color: red;
 }
 
-.form-control--invalid input,
-.form-control--invalid textarea {
+.control--invalid input,
+.control--invalid textarea {
    border-color: red;
    background: #ffd1d1;
 }

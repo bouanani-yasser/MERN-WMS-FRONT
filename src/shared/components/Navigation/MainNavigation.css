@@ -29,6 +29,11 @@
    color: #fff;
    font-weight: bold;
 }
+.main-navigation__logo a:hover {
+   text-decoration: none;
+   color: #fff;
+   font-weight: bold;
+}
 
 .main-navigation__header-nav {
    display: none;
