@@ -4,6 +4,12 @@ import Button from '../../shared/components/FormElements/Button';
 import FileStructure from './FileStructure';
 import ItemFile from './ItemFile';
 
+<<<<<<< HEAD:src/home/components/FileUpload.js
+=======
+import Button from '../../shared/components/FormElements/Button';
+import FileStructure from './FileStructure';
+
+>>>>>>> f538a78f5afe9c0bf6333eed4aba76cff5f713f8:src/shared/components/FormElements/FileUpload.js
 const FileUpload = (props) => {
    const [file, setFile] = useState();
    const [previewUrl, setPreviewUrl] = useState();
@@ -64,9 +70,13 @@ const FileUpload = (props) => {
             {!previewUrl ? (
                <p>Please pick a file .</p>
             ) : (
+<<<<<<< HEAD:src/home/components/FileUpload.js
                <div className="center">
                   <ItemFile name={file.name} />
                </div>
+=======
+               <p style={{ fontWeight: 'bold' }}>{file.name}</p>
+>>>>>>> f538a78f5afe9c0bf6333eed4aba76cff5f713f8:src/shared/components/FormElements/FileUpload.js
             )}
 
             <FileStructure

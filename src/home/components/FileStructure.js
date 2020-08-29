@@ -25,7 +25,11 @@ const FileStructure = (props) => {
                   className="item-close btn btn-danger"
                   type="button"
                   onClick={() => {
+<<<<<<< HEAD
                      setFields(fields.filter((_, i) => i !== index || i === 0));
+=======
+                     setFields(fields.filter((_, i) => i !== index || i == 0));
+>>>>>>> f538a78f5afe9c0bf6333eed4aba76cff5f713f8
                   }}
                >
                   X
