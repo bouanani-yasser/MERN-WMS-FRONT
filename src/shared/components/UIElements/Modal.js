@@ -7,7 +7,7 @@ import './Modal.css';
 
 const ModalOverlay = (props) => {
    const content = (
-      <div className={`modal ${props.className}`} style={props.style}>
+      <div className={`m ${props.className}`} style={props.style}>
          {/* <header className={`modal__header ${props.headerClass}`}>
             <h2>{props.header}</h2>
          </header> */}
@@ -18,10 +18,10 @@ const ModalOverlay = (props) => {
                   : (event) => event.preventDefault()
             }
          > */}
-         <div className={`modal__content ${props.contentClass}`}>
+         <div className={`m__content ${props.contentClass}`}>
             {props.children}
          </div>
-         <footer className={`modal__footer ${props.footerClass}`}>
+         <footer className={`m__footer ${props.footerClass}`}>
             {props.footer}
          </footer>
          {/* </form> */}
@@ -39,7 +39,7 @@ const Modal = (props) => {
             mountOnEnter
             unmountOnExit
             timeout={300}
-            classNames="modal"
+            classNames="m"
          >
             <ModalOverlay {...props} />
          </CSSTransition>

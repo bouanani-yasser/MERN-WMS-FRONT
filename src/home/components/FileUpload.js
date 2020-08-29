@@ -1,8 +1,9 @@
-import React, { useRef, useState, useEffect, useContext } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
-import Button from './Button';
-import FileStructure from '../../../home/components/FileStructure';
-import './FileUpload.css';
+import Button from '../../shared/components/FormElements/Button';
+import FileStructure from './FileStructure';
+import ItemFile from './ItemFile';
+
 const FileUpload = (props) => {
    const [file, setFile] = useState();
    const [previewUrl, setPreviewUrl] = useState();
@@ -56,20 +57,24 @@ const FileUpload = (props) => {
                // accept=".jpg,.png,.jpeg"
                onChange={pickedHandler}
             />
-            <main>
-               <Button type="button" onClick={pickFileHandler}>
-                  PICK FILE
-               </Button>
-               {!previewUrl ? (
-                  <p>Please pick a file .</p>
-               ) : (
-                  <p style={{ fontWeight: 'bold' }}>{file.name}</p>
-               )}
-               <div className="description">
-                  <h3>Description</h3>
-                  <FileStructure />
+
+            <Button type="button" onClick={pickFileHandler}>
+               PICK FILE
+            </Button>
+            {!previewUrl ? (
+               <p>Please pick a file .</p>
+            ) : (
+               <div className="center">
+                  <ItemFile name={file.name} />
                </div>
-            </main>
+            )}
+
+            <FileStructure
+               fields={props.fields}
+               fieldsChange={props.fieldsChange}
+               setFields={props.setFields}
+            />
+
             <Button type="submit" disabled={!props.isValid}>
                UPLOAD
             </Button>

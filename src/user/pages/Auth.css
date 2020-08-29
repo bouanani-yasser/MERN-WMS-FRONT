@@ -14,7 +14,7 @@
    margin: 7rem auto;
    align-content: center;
    padding: 0 20px;
-   border-radius: 5px;
+   border-radius: 10px;
    box-shadow: 1px 1px 5px 0px #aaa;
 }
 .authentication form {
@@ -29,7 +29,7 @@
    padding: 5px;
    margin: 5px;
    position: relative;
-   top: -40px;
+   top: -50px;
    font-weight: bold;
    left: 0;
    color: #222;

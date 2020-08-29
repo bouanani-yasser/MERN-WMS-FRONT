@@ -102,14 +102,14 @@ const Auth = () => {
          <div className="authentication">
             {isLoading && <LoadingSpinner asOverlay />}
             <label
-               className={isLoginMode && 'active'}
+               className={isLoginMode ? 'active' : null}
                onClick={switchModeHandler}
                value="L"
             >
                Login
             </label>
             <label
-               className={!isLoginMode && 'active'}
+               className={!isLoginMode ? 'active' : null}
                onClick={switchModeHandler}
                value="S"
             >
