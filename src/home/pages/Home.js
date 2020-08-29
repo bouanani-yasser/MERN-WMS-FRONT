@@ -12,18 +12,11 @@ import axios from 'axios';
 
 const Home = () => {
    const auth = useContext(AuthContext);
-<<<<<<< HEAD
    const [data, setData] = useState({});
    const [reload, setReload] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
    const [formState, inputHandler, setFormData] = useForm(
-=======
-   const [data, setData] = useState([{}]);
-   const [showModal, setShowModal] = useState(false);
-   const [isLoading, setIsLoading] = useState(false);
-   const [formState, inputHandler] = useForm(
->>>>>>> f538a78f5afe9c0bf6333eed4aba76cff5f713f8
       {
          file: {
             value: null,
@@ -35,7 +28,6 @@ const Home = () => {
 
    useEffect(() => {
       const fetchData = async () => {
-<<<<<<< HEAD
          setIsLoading(true);
          setTimeout(async () => {
             try {
@@ -53,20 +45,6 @@ const Home = () => {
 
       fetchData();
    }, [reload, auth.userId]);
-=======
-         try {
-            const result = await axios(
-               `http://localhost:5000/api/${auth.userId}/files`
-            );
-            setData(result.data);
-         } catch (err) {
-            console.log('data' + err);
-         }
-      };
-
-      fetchData();
-   }, [data]);
->>>>>>> f538a78f5afe9c0bf6333eed4aba76cff5f713f8
 
    const fieldsState = [
       { key: 'Title', val: '' },
@@ -75,7 +53,6 @@ const Home = () => {
    ];
    const [fields, setFields] = useState(fieldsState);
 
-<<<<<<< HEAD
    const onChangeSearchHandler = async (event) => {
       let query = event.target.value;
       try {
@@ -88,8 +65,6 @@ const Home = () => {
       }
    };
 
-=======
->>>>>>> f538a78f5afe9c0bf6333eed4aba76cff5f713f8
    const onChangeHandler = (event, index, type) => {
       const newFields = [...fields];
       type === 'key'
@@ -110,11 +85,7 @@ const Home = () => {
       formData.append('file', formState.inputs.file.value);
       setTimeout(() => {
          axios
-<<<<<<< HEAD
             .post('http://localhost:5000/api/users/upload', formData, {
-=======
-            .post('http://localhost:5000/api/users/uplad', formData, {
->>>>>>> f538a78f5afe9c0bf6333eed4aba76cff5f713f8
                headers: {
                   Authorization: 'Bearer ' + auth.token,
                },
@@ -131,7 +102,6 @@ const Home = () => {
                console.log(error);
             });
       }, 1000);
-<<<<<<< HEAD
       setTimeout(() => {
          setReload((prev) => !prev);
       }, 2000);
@@ -145,8 +115,6 @@ const Home = () => {
          },
          false
       );
-=======
->>>>>>> f538a78f5afe9c0bf6333eed4aba76cff5f713f8
    };
 
    return (
