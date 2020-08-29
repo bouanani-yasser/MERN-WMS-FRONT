@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ItemFile from './ItemFile';
 const FileViwer = (props) => {
    const [showOpt, setShowOpt] = useState(false);
    const [corOpt, setCorOpt] = useState({ x: null, y: null });
-   const [Node, setNode] = useState(null);
+   // const [Node, setNode] = useState(null);
 
    // useEffect(() => {
    //    document.addEventListener('mousedown', handleClick, false);
@@ -15,12 +15,12 @@ const FileViwer = (props) => {
    //    };
    // }, []);
 
-   const handleClick = (event) => {
-      if (Node.contains(event.target)) {
-         return;
-      }
-      alert('its work !!');
-   };
+   // const handleClick = (event) => {
+   //    if (Node.contains(event.target)) {
+   //       return;
+   //    }
+   //    alert('its work !!');
+   // };
 
    const showOptHandler = (event) => {
       setShowOpt((prev) => !prev);
@@ -32,9 +32,9 @@ const FileViwer = (props) => {
       <div className="files-viwer">
          {showOpt && (
             <div
-               ref={(node) => {
-                  setNode(node);
-               }}
+               // ref={(node) => {
+               //    setNode(node);
+               // }}
                className="option"
                style={{ top: corOpt.y + 'px', left: corOpt.x + 'px' }}
             >

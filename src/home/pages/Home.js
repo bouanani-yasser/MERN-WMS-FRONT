@@ -7,7 +7,6 @@ import FileUpload from '../components/FileUpload';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import Modal from '../../shared/components/UIElements/Modal';
 import { AuthContext } from '../../shared/context/auth-context';
-import FileReader from '../components/FileReader';
 import axios from 'axios';
 
 const Home = () => {
