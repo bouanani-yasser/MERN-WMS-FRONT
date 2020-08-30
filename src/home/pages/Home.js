@@ -6,15 +6,25 @@ import { useForm } from '../../shared/hooks/form-hook';
 import FileUpload from '../components/FileUpload';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import Modal from '../../shared/components/UIElements/Modal';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import { AuthContext } from '../../shared/context/auth-context';
+import up from '../../assets/svg/plus.svg';
 import axios from 'axios';
 
 const Home = () => {
+   const fieldsState = [
+      { key: 'Title', val: '' },
+      { key: 'Type', val: '' },
+      { key: 'Content', val: '' },
+   ];
    const auth = useContext(AuthContext);
    const [data, setData] = useState({});
    const [reload, setReload] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
+   const [isUploading, setIsUploading] = useState(false);
+   const [error, setError] = useState(false);
+   const [fields, setFields] = useState(fieldsState);
    const [formState, inputHandler, setFormData] = useForm(
       {
          file: {
@@ -38,19 +48,13 @@ const Home = () => {
                setIsLoading(false);
             } catch (err) {
                console.log('data' + err);
+               setError(true);
             }
          }, 1000);
       };
 
       fetchData();
    }, [reload, auth.userId]);
-
-   const fieldsState = [
-      { key: 'Title', val: '' },
-      { key: 'Type', val: '' },
-      { key: 'Content', val: '' },
-   ];
-   const [fields, setFields] = useState(fieldsState);
 
    const onChangeSearchHandler = async (event) => {
       let query = event.target.value;
@@ -61,6 +65,7 @@ const Home = () => {
          setData(result.data.files);
       } catch (err) {
          console.log('err ' + err);
+         setError(true);
       }
    };
 
@@ -72,14 +77,17 @@ const Home = () => {
       setFields([...newFields]);
    };
 
-   const clickHandler = () => {
+   const clearError = () => {
+      setError(false);
+   };
+   const cleanModel = () => {
       setShowModal(false);
       setFields(fieldsState);
    };
 
    const uploadHandler = (event) => {
       event.preventDefault();
-      setIsLoading(true);
+      setIsUploading(true);
       const formData = new FormData();
       formData.append('file', formState.inputs.file.value);
       setTimeout(() => {
@@ -92,12 +100,14 @@ const Home = () => {
             .then(function (response) {
                // handle success
                console.log(response);
-               setIsLoading(false);
-               clickHandler();
+               setIsUploading(false);
+               cleanModel();
             })
             .catch(function (error) {
                // handle error
                setIsLoading(false);
+               cleanModel();
+               setError(true);
                console.log(error);
             });
       }, 1000);
@@ -118,8 +128,9 @@ const Home = () => {
 
    return (
       <React.Fragment>
-         <Modal show={showModal} onCancel={clickHandler}>
-            {isLoading && <LoadingSpinner asOverlay />}
+         <ErrorModal error={error} onClear={clearError} />
+         <Modal show={showModal} onCancel={cleanModel}>
+            {isUploading && <LoadingSpinner asOverlay />}
             <FileUpload
                id="file"
                uploadHandler={uploadHandler}
@@ -132,15 +143,17 @@ const Home = () => {
          </Modal>
          <div className="home">
             <div className="wms-head">
-               <Search onChange={onChangeSearchHandler}></Search>
                <button
-                  className="btn btn-info"
                   onClick={() => {
                      setShowModal(true);
                   }}
                >
-                  Add Files
+                  <span>
+                     <img src={up} alt="up" />
+                  </span>
+                  NEW
                </button>
+               <Search onChange={onChangeSearchHandler}></Search>
             </div>
             <main className="wms-main">
                <FileViwer files={data} loading={isLoading}></FileViwer>

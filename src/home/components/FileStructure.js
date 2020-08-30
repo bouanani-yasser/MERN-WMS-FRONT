@@ -21,28 +21,29 @@ const FileStructure = (props) => {
                   value={field.val}
                   onChange={(event) => fieldsChange(event, index)}
                />
-               <button
-                  className="item-close btn btn-danger"
-                  type="button"
-                  onClick={() => {
-                     setFields(fields.filter((_, i) => i !== index || i === 0));
-                  }}
-               >
-                  X
-               </button>
+               {index !== 0 ? (
+                  <button
+                     className="ctr-item btn btn-danger"
+                     type="button"
+                     onClick={() => {
+                        setFields(fields.filter((_, i) => i !== index));
+                     }}
+                  >
+                     x
+                  </button>
+               ) : (
+                  <button
+                     className="ctr-item btn btn-success"
+                     type="button"
+                     onClick={() => {
+                        setFields((prev) => prev.concat({ key: '', val: '' }));
+                     }}
+                  >
+                     +
+                  </button>
+               )}
             </div>
          ))}
-
-         <button
-            className="btn btn-success"
-            style={{ fontWeight: 'bold', width: '90px' }}
-            type="button"
-            onClick={() => {
-               setFields((prev) => prev.concat({ key: '', val: '' }));
-            }}
-         >
-            ADD
-         </button>
       </div>
    );
 };

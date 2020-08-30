@@ -2,8 +2,13 @@
    color: #fff;
    width: 60vw;
    padding: 20px;
-   margin-left: 5vw;
    margin-top: 20vh;
+   font-size: 2vmin;
+}
+
+.btns {
+   width: 40vw;
+   text-align: center;
 }
 
 .banner ul {
@@ -17,7 +22,16 @@
    padding: 10px;
    margin: 10px;
    font-weight: bold;
-   font-size: 35px;
+   font-size: 4vmin;
+}
+
+.banner ul li img {
+   background: #fff;
+   border-radius: 50%;
+   padding: 5px;
+   width: 50px;
+   margin: 5px;
+   height: 50px;
 }
 
 .banner .start {

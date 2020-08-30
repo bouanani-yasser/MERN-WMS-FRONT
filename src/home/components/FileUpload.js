@@ -62,7 +62,7 @@ const FileUpload = (props) => {
                PICK FILE
             </Button>
             {!previewUrl ? (
-               <p>Please pick a file .</p>
+               <p style={{ margin: '20px' }}>Please pick a file</p>
             ) : (
                <div className="center">
                   <ItemFile name={file.name} />

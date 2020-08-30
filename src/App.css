@@ -44,8 +44,9 @@
   all: unset;
   margin: 10px 20px;
   background: #fff;
+  font-weight: 500;
   width: 50vw;
-  height: 1.5rem;
+  height: 1.9rem;
   border-radius: 5px;
   padding: 5px 10px;
   -webkit-box-shadow: 1px 1px 10px 0px #aaa;
@@ -57,7 +58,40 @@
           box-shadow: 1px 1px 10px 0px #03907c;
 }
 
+.wms-head button {
+  all: unset;
+  margin: 0 10px;
+  width: 120px;
+  height: 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.5vmin;
+  background: #fff;
+  color: #03907c;
+  padding: 5px;
+}
+
+.wms-head button:hover {
+  -webkit-box-shadow: 0px 1px 4px 1px #fff;
+          box-shadow: 0px 1px 4px 1px #fff;
+}
+
+.wms-head button:focus {
+  outline: none;
+}
+
+.wms-head button img {
+  display: inline;
+  -webkit-animation: rot 2s infinite;
+          animation: rot 2s infinite;
+  border-radius: 50%;
+  width: 30%;
+  margin: 0 10px;
+  height: 100%;
+}
+
 .wms-main {
+  position: relative;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -103,7 +137,7 @@
   position: absolute;
   border-radius: 10px;
   width: 150px;
-  height: 170px;
+  height: 210px;
 }
 
 .wms-main .files-viwer .option ul {
@@ -206,6 +240,28 @@
   left: 50px;
 }
 
+@-webkit-keyframes rot {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes rot {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -284,13 +340,12 @@ a:hover, a:active {
   padding: 5px;
 }
 
-.upload-modal .file-str .item-str .item-close {
+.upload-modal .file-str .item-str .ctr-item {
   font-weight: bold;
   position: absolute;
   right: -6%;
-  border-radius: 50%;
-  width: 25px;
-  height: 30px;
+  width: 30px;
+  height: 35px;
   padding: 0;
 }
 

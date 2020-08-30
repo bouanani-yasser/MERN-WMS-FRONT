@@ -5,10 +5,15 @@ import Modal from './Modal';
 const ErrorModal = (props) => {
    return (
       <Modal
+         head
          onCancel={props.onClear}
          header="An Error Occurred!"
          show={!!props.error}
-         footer={<button onClick={props.onClear}>Try Later</button>}
+         footer={
+            <button className="btn btn-secondary" onClick={props.onClear}>
+               Try again
+            </button>
+         }
       >
          <p>{props.error}</p>
       </Modal>

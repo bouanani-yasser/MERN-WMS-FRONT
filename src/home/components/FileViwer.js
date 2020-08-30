@@ -39,14 +39,15 @@ const FileViwer = (props) => {
                style={{ top: corOpt.y + 'px', left: corOpt.x + 'px' }}
             >
                <ul>
-                  <li>Preview</li>
-                  <li>Remove</li>
-                  <li>Details</li>
-                  <li>Close</li>
+                  <li onClick={() => setShowOpt(false)}>Preview</li>
+                  <li onClick={() => setShowOpt(false)}>Remove</li>
+                  <li onClick={() => setShowOpt(false)}>modify</li>
+                  <li onClick={() => setShowOpt(false)}>Details</li>
+                  <li onClick={() => setShowOpt(false)}>Close</li>
                </ul>
             </div>
          )}
-         {!!props.loading && <LoadingSpinner />}
+         {!!props.loading && <LoadingSpinner asOverlay />}
          {props.files.length !== 0 && props.files ? (
             Array.from(props.files).map((file, index) => (
                <ItemFile

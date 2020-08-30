@@ -1,19 +1,22 @@
 .m {
    z-index: 100;
    position: fixed;
+   text-align: center;
    top: 22vh;
    left: 10%;
    width: 80%;
    background: white;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-   border-radius: 8px;
+   box-shadow: 0 2px 8px #555;
+   border-radius: 10px;
 }
 
 .m__header {
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
    width: 100%;
    padding: 1rem 0.5rem;
-   background: #2a006e;
-   color: white;
+   background: rgb(173, 7, 7);
+   color: #eee;
 }
 
 .m__header h2 {
@@ -22,6 +25,7 @@
 
 .m__content {
    padding: 1rem 0.5rem;
+   font-weight: 500;
 }
 
 .m__footer {
