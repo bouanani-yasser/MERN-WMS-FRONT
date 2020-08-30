@@ -57,6 +57,7 @@ const Home = () => {
    }, [reload, auth.userId]);
 
    const onChangeSearchHandler = async (event) => {
+      // setIsLoading(true);
       let query = event.target.value;
       try {
          const result = await axios(
@@ -67,6 +68,7 @@ const Home = () => {
          console.log('err ' + err);
          setError(true);
       }
+      // setIsLoading(false);
    };
 
    const onChangeHandler = (event, index, type) => {

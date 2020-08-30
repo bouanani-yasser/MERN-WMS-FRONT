@@ -25,7 +25,7 @@ const FileViwer = (props) => {
    const showOptHandler = (event) => {
       setShowOpt((prev) => !prev);
       const cor = event.target.getBoundingClientRect();
-      setCorOpt({ x: cor.left + 30, y: cor.top - 30 });
+      setCorOpt({ x: cor.left - 30, y: cor.top - 200 });
    };
 
    return (
