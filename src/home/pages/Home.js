@@ -41,7 +41,7 @@ const Home = () => {
          setTimeout(async () => {
             try {
                const result = await axios(
-                  `http://localhost:5000/api/users/${auth.userId}/files`
+                  `${process.env.REACT_APP_BACKEND_URL}users/${auth.userId}/files`
                );
                setData(result.data.files);
                // console.log('files', result.data.files);
@@ -50,7 +50,7 @@ const Home = () => {
                console.log('data' + err);
                setError(true);
             }
-         }, 1000);
+         }, 0);
       };
 
       fetchData();
@@ -61,7 +61,7 @@ const Home = () => {
       let query = event.target.value;
       try {
          const result = await axios(
-            `http://localhost:5000/api/users/${auth.userId}/files/${query}`
+            `${process.env.REACT_APP_BACKEND_URL}users/${auth.userId}/files/${query}`
          );
          setData(result.data.files);
       } catch (err) {
@@ -94,16 +94,21 @@ const Home = () => {
       formData.append('file', formState.inputs.file.value);
       setTimeout(() => {
          axios
-            .post('http://localhost:5000/api/users/upload', formData, {
-               headers: {
-                  Authorization: 'Bearer ' + auth.token,
-               },
-            })
+            .post(
+               `${process.env.REACT_APP_BACKEND_URL}users/upload`,
+               formData,
+               {
+                  headers: {
+                     Authorization: 'Bearer ' + auth.token,
+                  },
+               }
+            )
             .then(function (response) {
                // handle success
                console.log(response);
                setIsUploading(false);
                cleanModel();
+               setReload((prev) => !prev);
             })
             .catch(function (error) {
                // handle error
@@ -112,10 +117,7 @@ const Home = () => {
                setError(true);
                console.log(error);
             });
-      }, 1000);
-      setTimeout(() => {
-         setReload((prev) => !prev);
-      }, 2000);
+      }, 0);
 
       setFormData(
          {
