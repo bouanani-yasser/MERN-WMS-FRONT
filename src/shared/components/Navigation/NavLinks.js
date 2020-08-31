@@ -8,7 +8,7 @@ const NavLinks = (props) => {
    const auth = useContext(AuthContext);
 
    return (
-      <React.Fragment>
+      <div className="all-nav">
          <ul className="nav-links">
             <li>
                <NavLink to="/" exact>
@@ -52,7 +52,7 @@ const NavLinks = (props) => {
                </li>
             )}
          </ul>
-      </React.Fragment>
+      </div>
    );
 };
 

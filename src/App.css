@@ -26,6 +26,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 90%;
+  margin: auto;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -37,7 +39,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 20px 90px;
+  padding: 20px 10px;
 }
 
 .wms-head #search {
@@ -45,9 +47,9 @@
   margin: 10px 20px;
   background: #fff;
   font-weight: 500;
-  width: 50vw;
+  width: 60vw;
   height: 1.9rem;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 5px 10px;
   -webkit-box-shadow: 1px 1px 10px 0px #aaa;
           box-shadow: 1px 1px 10px 0px #aaa;
@@ -62,10 +64,11 @@
   all: unset;
   margin: 0 10px;
   width: 120px;
+  min-width: 90px;
   height: 2rem;
   border-radius: 10px;
   font-weight: bold;
-  font-size: 1.5vmin;
+  font-size: px;
   background: #fff;
   color: #03907c;
   padding: 5px;
@@ -106,6 +109,7 @@
   width: 90vw;
   height: 70vh;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .wms-main .files-viwer {
@@ -123,7 +127,6 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin: 10px auto;
-  padding: 20px;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -240,6 +243,16 @@
   left: 50px;
 }
 
+@media (max-width: 768px) {
+  .wms-head #search {
+    width: 9rem;
+  }
+  .wms-head button {
+    font-size: 14px;
+    width: 3rem;
+  }
+}
+
 @-webkit-keyframes rot {
   from {
     -webkit-transform: rotate(0deg);
@@ -311,8 +324,8 @@ a:hover, a:active {
 }
 
 .upload-modal .file-str {
-  padding: 0px 20px;
-  margin: 10px;
+  padding: 0px 10px;
+  margin: 0 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -326,7 +339,7 @@ a:hover, a:active {
 }
 
 .upload-modal .file-str .item-str {
-  width: 90%;
+  width: 100%;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -350,9 +363,9 @@ a:hover, a:active {
 }
 
 .upload-modal .file-str input {
-  margin: 10px;
+  margin: 10px 5px;
   display: inline;
-  width: 30%;
+  width: 20%;
 }
 
 .upload-modal .item-file {

@@ -21,6 +21,7 @@
 
 .m__header h2 {
    margin: 0.5rem;
+   font-size: 15px;
 }
 
 .m__content {
@@ -36,6 +37,10 @@
    .m {
       left: calc(50% - 20rem);
       width: 40rem;
+   }
+
+   .m__header h2 {
+      font-size: 20px;
    }
 }
 

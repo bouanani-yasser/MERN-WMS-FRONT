@@ -6,6 +6,7 @@
 .authentication {
    position: absolute;
    top: 20%;
+   background: #fff;
    left: 50%;
    transform: translate(0%, 0%);
    width: 90%;
@@ -26,10 +27,14 @@
 }
 
 .authentication label {
+   z-index: 3;
    padding: 5px;
+   background: #fff;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
    margin: 5px;
    position: relative;
-   top: -50px;
+   top: -42px;
    font-weight: bold;
    left: 0;
    color: #222;
@@ -42,4 +47,14 @@
 
 .authentication form {
    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+   .authentication {
+      position: absolute;
+      width: 85%;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
 }
