@@ -40,10 +40,9 @@ const FileViwer = (props) => {
             >
                <ul>
                   <li onClick={() => setShowOpt(false)}>Preview</li>
+                  <li onClick={() => setShowOpt(false)}>Download</li>
                   <li onClick={() => setShowOpt(false)}>Remove</li>
                   <li onClick={() => setShowOpt(false)}>modify</li>
-                  <li onClick={() => setShowOpt(false)}>Details</li>
-                  <li onClick={() => setShowOpt(false)}>Close</li>
                </ul>
             </div>
          )}
@@ -56,9 +55,18 @@ const FileViwer = (props) => {
                   showOpt={showOptHandler}
                />
             ))}
-         {!props.loading && props.files.length === 0 && (
+         {!props.loading && props.files.length === 0 && !props.search && (
             <div className="center">
                <p>You don't have any files yet,Please UPLOAD files.</p>
+            </div>
+         )}
+
+         {!props.loading && props.files.length === 0 && props.search && (
+            <div className="center">
+               <p>
+                  You don't have any files match{' '}
+                  <strong>{props.search + ''}</strong>
+               </p>
             </div>
          )}
       </div>

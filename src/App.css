@@ -139,11 +139,12 @@
   background: #fff;
   position: absolute;
   border-radius: 10px;
+  padding: 0 10px;
   width: 150px;
-  height: 210px;
 }
 
 .wms-main .files-viwer .option ul {
+  margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -19,6 +19,7 @@ const Home = () => {
    ];
    const auth = useContext(AuthContext);
    const [data, setData] = useState({});
+   const [query, setQuery] = useState();
    const [reload, setReload] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
@@ -58,10 +59,11 @@ const Home = () => {
 
    const onChangeSearchHandler = async (event) => {
       // setIsLoading(true);
-      let query = event.target.value;
+      let searchQuery = event.target.value;
+      setQuery(searchQuery);
       try {
          const result = await axios(
-            `${process.env.REACT_APP_BACKEND_URL}users/${auth.userId}/files/${query}`
+            `${process.env.REACT_APP_BACKEND_URL}users/${auth.userId}/files/${searchQuery}`
          );
          setData(result.data.files);
       } catch (err) {
@@ -160,7 +162,11 @@ const Home = () => {
                <Search onChange={onChangeSearchHandler}></Search>
             </div>
             <main className="wms-main">
-               <FileViwer files={data} loading={isLoading}></FileViwer>
+               <FileViwer
+                  files={data}
+                  search={query}
+                  loading={isLoading}
+               ></FileViwer>
             </main>
          </div>
       </React.Fragment>
