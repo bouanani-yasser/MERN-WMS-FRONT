@@ -29,7 +29,7 @@ const Banner = (props) => (
          </li>
       </ul>
       <div className="btns">
-         <Link className="start" to="/auth">
+         <Link className="btn btn-warning start" to="/auth">
             Get Started NOW<span></span>
          </Link>
          <button className="inverse">Know More?</button>

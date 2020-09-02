@@ -66,17 +66,20 @@ a {
 
          .ctr-item {
             font-weight: bold;
-            position: absolute;
-            right: -6%;
             width: 30px;
             height: 35px;
             padding: 0;
          }
-      }
-      input {
-         margin: 10px 5px;
-         display: inline;
-         width: 20%;
+         input {
+            margin: 10px 5px;
+            display: inline;
+            width: 20%;
+         }
+         textarea {
+            margin: 10px 5px;
+            display: inline;
+            width: 70%;
+         }
       }
    }
 
@@ -138,4 +141,14 @@ a {
    display: flex;
    justify-content: center;
    align-items: center;
+}
+
+@media (max-width: 768px) {
+   .upload-modal .file-str .item-str {
+      input {
+         width: 30%;
+         font-size: 12px;
+         padding: 1px;
+      }
+   }
 }

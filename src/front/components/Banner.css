@@ -10,6 +10,8 @@
 .btns {
    width: 80vw;
    text-align: left;
+   margin-left: 5vw;
+   margin-top: 9vw;
 }
 
 .banner ul {

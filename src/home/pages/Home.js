@@ -44,7 +44,7 @@ const Home = () => {
                   `${process.env.REACT_APP_BACKEND_URL}users/${auth.userId}/files`
                );
                setData(result.data.files);
-               // console.log('files', result.data.files);
+               console.log('files', result.data.files);
                setIsLoading(false);
             } catch (err) {
                console.log('data' + err);

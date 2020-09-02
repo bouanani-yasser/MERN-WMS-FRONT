@@ -355,17 +355,21 @@ a:hover, a:active {
 
 .upload-modal .file-str .item-str .ctr-item {
   font-weight: bold;
-  position: absolute;
-  right: -6%;
   width: 30px;
   height: 35px;
   padding: 0;
 }
 
-.upload-modal .file-str input {
+.upload-modal .file-str .item-str input {
   margin: 10px 5px;
   display: inline;
   width: 20%;
+}
+
+.upload-modal .file-str .item-str textarea {
+  margin: 10px 5px;
+  display: inline;
+  width: 70%;
 }
 
 .upload-modal .item-file {
@@ -451,5 +455,13 @@ a:hover, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 768px) {
+  .upload-modal .file-str .item-str input {
+    width: 30%;
+    font-size: 12px;
+    padding: 1px;
+  }
 }
 /*# sourceMappingURL=App.css.map */

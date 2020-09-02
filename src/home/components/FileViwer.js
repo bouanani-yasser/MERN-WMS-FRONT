@@ -25,7 +25,7 @@ const FileViwer = (props) => {
    const showOptHandler = (event) => {
       setShowOpt((prev) => !prev);
       const cor = event.target.getBoundingClientRect();
-      setCorOpt({ x: cor.left - 30, y: cor.top - 200 });
+      setCorOpt({ x: cor.left - 40, y: cor.top - 200 });
    };
 
    return (
@@ -47,16 +47,16 @@ const FileViwer = (props) => {
                </ul>
             </div>
          )}
-         {!!props.loading && <LoadingSpinner asOverlay />}
-         {props.files.length !== 0 && props.files ? (
+         {props.loading && <LoadingSpinner asOverlay />}
+         {!props.loading &&
             Array.from(props.files).map((file, index) => (
                <ItemFile
                   key={index}
                   path={file.path}
                   showOpt={showOptHandler}
                />
-            ))
-         ) : (
+            ))}
+         {!props.loading && props.files.length === 0 && (
             <div className="center">
                <p>You don't have any files yet,Please UPLOAD files.</p>
             </div>
