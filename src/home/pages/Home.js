@@ -42,7 +42,7 @@ const Home = () => {
          setTimeout(async () => {
             try {
                const result = await axios(
-                  `${process.env.REACT_APP_BACKEND_URL}docs/${auth.userId}`
+                  `${process.env.REACT_APP_BACKEND_URL}docs/list/${auth.userId}`
                );
                setData(result.data.Docs);
                console.log('docs', result.data.Docs);
