@@ -77,6 +77,8 @@
 .wms-head button:hover {
   -webkit-box-shadow: 0px 1px 4px 1px #fff;
           box-shadow: 0px 1px 4px 1px #fff;
+  -webkit-animation: shakeAnim 3s forwards;
+          animation: shakeAnim 3s forwards;
 }
 
 .wms-head button:focus {
@@ -85,8 +87,8 @@
 
 .wms-head button img {
   display: inline;
-  -webkit-animation: rot 2s infinite;
-          animation: rot 2s infinite;
+  -webkit-animation: shake 3s infinite;
+          animation: shake 3s infinite;
   border-radius: 50%;
   width: 30%;
   margin: 0 10px;
@@ -139,7 +141,7 @@
   background: #fff;
   position: absolute;
   border-radius: 10px;
-  padding: 0 10px;
+  padding: 0;
   width: 150px;
 }
 
@@ -254,25 +256,143 @@
   }
 }
 
-@-webkit-keyframes rot {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+@-webkit-keyframes shakeAnim {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
+  1% {
+    -webkit-transform: translateX(-3px);
+            transform: translateX(-3px);
+  }
+  2% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  3% {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+  }
+  4% {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+  }
+  5% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  6% {
+    -webkit-transform: translateX(3px);
+            transform: translateX(3px);
+  }
+  7% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 
-@keyframes rot {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+@keyframes shakeAnim {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
+  1% {
+    -webkit-transform: translateX(-3px);
+            transform: translateX(-3px);
+  }
+  2% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  3% {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+  }
+  4% {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+  }
+  5% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  6% {
+    -webkit-transform: translateX(3px);
+            transform: translateX(3px);
+  }
+  7% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  1% {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  2% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+  3% {
+    -webkit-transform: translateY(-8px);
+            transform: translateY(-8px);
+  }
+  4% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  5% {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  6% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+  7% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  1% {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  2% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+  3% {
+    -webkit-transform: translateY(-8px);
+            transform: translateY(-8px);
+  }
+  4% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  5% {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  6% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+  7% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 

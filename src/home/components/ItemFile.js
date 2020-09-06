@@ -13,7 +13,7 @@ import menu from '../../assets/icons/menu.svg';
 
 const ItemFile = (props) => {
    let content = null;
-   const name = props.name || props.path.split('/')[2];
+   const name = props.name || props.path.split('/')[1];
 
    const exts = {
       txt: ['.txt', '.tex', '.wpd', '.rtf', '.xml', '.json'],
@@ -28,7 +28,7 @@ const ItemFile = (props) => {
 
    if (exts.photo.find((el) => name.endsWith(el))) {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={photo} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>
@@ -38,7 +38,7 @@ const ItemFile = (props) => {
       );
    } else if (exts.audio.find((el) => name.endsWith(el))) {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={audio} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>
@@ -48,7 +48,7 @@ const ItemFile = (props) => {
       );
    } else if (exts.video.find((el) => name.endsWith(el))) {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={video} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>
@@ -58,7 +58,7 @@ const ItemFile = (props) => {
       );
    } else if (exts.pdf.find((el) => name.endsWith(el))) {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={pdf} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>
@@ -68,7 +68,7 @@ const ItemFile = (props) => {
       );
    } else if (exts.word.find((el) => name.endsWith(el))) {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={word} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>
@@ -78,7 +78,7 @@ const ItemFile = (props) => {
       );
    } else if (exts.excel.find((el) => name.endsWith(el))) {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={excel} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>
@@ -88,7 +88,7 @@ const ItemFile = (props) => {
       );
    } else if (exts.rar.find((el) => name.endsWith(el))) {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={rar} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>
@@ -98,7 +98,7 @@ const ItemFile = (props) => {
       );
    } else if (exts.txt.find((el) => name.endsWith(el))) {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={txt} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>
@@ -108,7 +108,7 @@ const ItemFile = (props) => {
       );
    } else {
       content = (
-         <div className="item-file">
+         <div className="item-file" data-id={props.id}>
             <img src={unknown} alt="text" />
             <p title={name}>{name}</p>
             <label onClick={(event) => props.showOpt(event)}>

@@ -37,13 +37,14 @@
       padding: 5px;
       &:hover {
          box-shadow: 0px 1px 4px 1px #fff;
+         animation: shakeAnim 3s forwards;
       }
       &:focus {
          outline: none;
       }
       img {
          display: inline;
-         animation: rot 2s infinite;
+         animation: shake 3s infinite;
          border-radius: 50%;
          width: 30%;
          margin: 0 10px;
@@ -79,7 +80,7 @@
          background: #fff;
          position: absolute;
          border-radius: 10px;
-         padding: 0 10px;
+         padding: 0;
          width: 150px;
          ul {
             margin: 0;
@@ -171,12 +172,57 @@
    }
 }
 
-@keyframes rot {
-   from {
-      transform: rotate(0deg);
+@keyframes shakeAnim {
+   0% {
+      transform: translateX(0);
    }
-   to {
-      transform: rotate(359deg);
+   1% {
+      transform: translateX(-3px);
+   }
+   2% {
+      transform: translateX(5px);
+   }
+   3% {
+      transform: translateX(-8px);
+   }
+   4% {
+      transform: translateX(8px);
+   }
+   5% {
+      transform: translateX(-5px);
+   }
+   6% {
+      transform: translateX(3px);
+   }
+   7% {
+      transform: translateX(0);
+   }
+}
+
+@keyframes shake {
+   0% {
+      transform: translateY(0);
+   }
+   1% {
+      transform: translateY(-3px);
+   }
+   2% {
+      transform: translateY(5px);
+   }
+   3% {
+      transform: translateY(-8px);
+   }
+   4% {
+      transform: translateY(8px);
+   }
+   5% {
+      transform: translateY(-5px);
+   }
+   6% {
+      transform: translateY(3px);
+   }
+   7% {
+      transform: translateX(0);
    }
 }
 
