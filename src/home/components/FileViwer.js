@@ -2,12 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import Modal from '../../shared/components/UIElements/Modal';
+import FileStructure from './FileStructure';
 import ItemFile from './ItemFile';
 const FileViwer = (props) => {
    const [showOpt, setShowOpt] = useState(false);
    const [corOpt, setCorOpt] = useState({ x: null, y: null });
    const [docId, setDocId] = useState();
-   const [showModal, setShowModal] = useState(false);
+   const [showDeleleModal, setShowDeleteModal] = useState(false);
+   const [showModifyModal, setShowModifyModal] = useState(false);
    const Node = useRef();
    const pareNode = useRef();
 
@@ -30,7 +32,9 @@ const FileViwer = (props) => {
    };
 
    const showOptHandler = (event) => {
-      setDocId(event.target.parentElement.parentElement.dataset.id);
+      const id = event.target.parentElement.parentElement.dataset.id;
+      setDocId(id);
+      props.setFields(props.files.find((file) => file._id === id).structure);
       const pareCor = pareNode.current.getBoundingClientRect();
       const cor = event.target.getBoundingClientRect();
       let X = cor.left - 50;
@@ -50,16 +54,19 @@ const FileViwer = (props) => {
       const query = event.target.textContent;
       switch (query) {
          case 'Preview':
-            console.log('preview : ' + docId);
+            window.open(
+               process.env.REACT_APP_STORE +
+                  props.files.find((file) => file._id === docId).path
+            );
             break;
          case 'Download':
             props.downloadItemHandler(docId);
             break;
          case 'Remove':
-            setShowModal(true);
+            setShowDeleteModal(true);
             break;
          case 'Modify':
-            console.log('Modify');
+            setShowModifyModal(true);
             break;
          default:
             console.log('Sorry , we are out of this Query');
@@ -69,7 +76,10 @@ const FileViwer = (props) => {
 
    return (
       <div className="files-viwer" ref={pareNode}>
-         <Modal show={showModal} onCancel={() => setShowModal(false)}>
+         <Modal
+            show={showDeleleModal}
+            onCancel={() => setShowDeleteModal(false)}
+         >
             <h5>are you sure you want to delete this file ?</h5>
             <div className="center">
                <button
@@ -78,7 +88,7 @@ const FileViwer = (props) => {
                   style={{ margin: '10px 20px' }}
                   onClick={() => {
                      props.removeItemHandler(docId);
-                     setShowModal(false);
+                     setShowDeleteModal(false);
                   }}
                >
                   Delete
@@ -88,11 +98,27 @@ const FileViwer = (props) => {
                   className="btn btn-secondary"
                   style={{ margin: '10px 20px' }}
                   onClick={() => {
-                     setShowModal(false);
+                     setShowDeleteModal(false);
                   }}
                >
                   Cancel
                </button>
+            </div>
+         </Modal>
+         <Modal
+            show={showModifyModal}
+            onCancel={() => {
+               setShowModifyModal(false);
+               props.setFields(props.fieldsState);
+            }}
+         >
+            <div className="upload-modal">
+               <FileStructure
+                  fields={props.fields}
+                  fieldsChange={props.fieldsChange}
+                  setFields={props.setFields}
+               />
+               <button className="btn btn-info">Update</button>
             </div>
          </Modal>
          {showOpt && (

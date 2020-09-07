@@ -177,8 +177,8 @@ const Home = () => {
                uploadHandler={uploadHandler}
                onInput={inputHandler}
                fields={fields}
-               fieldsChange={onChangeHandler}
                isValid={formState.isValid}
+               fieldsChange={onChangeHandler}
                setFields={setFields}
             />
          </Modal>
@@ -203,6 +203,10 @@ const Home = () => {
                   files={data}
                   search={query}
                   loading={isLoading}
+                  fieldsChange={onChangeHandler}
+                  fields={fields}
+                  setFields={setFields}
+                  fieldsState={fieldsState}
                ></FileViwer>
             </main>
          </div>
