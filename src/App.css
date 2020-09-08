@@ -26,8 +26,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  margin-bottom: 15px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -39,7 +40,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 5px 10px;
+  padding: 5px 30px;
 }
 
 .wms-head #search {
@@ -47,7 +48,7 @@
   margin: 10px 20px;
   background: #fff;
   font-weight: 500;
-  width: 60vw;
+  width: 50vw;
   height: 1.9rem;
   border-radius: 10px;
   padding: 5px 10px;
@@ -60,32 +61,36 @@
           box-shadow: 1px 1px 10px 0px #03907c;
 }
 
-.wms-head button {
+.wms-head .up {
   all: unset;
+  cursor: pointer;
   margin: 0 10px;
   width: 120px;
-  min-width: 90px;
   height: 2rem;
   border-radius: 10px;
-  font-weight: bold;
-  font-size: px;
   background: #fff;
   color: #03907c;
   padding: 5px;
 }
 
-.wms-head button:hover {
+.wms-head .up:hover {
   -webkit-box-shadow: 0px 1px 4px 1px #fff;
           box-shadow: 0px 1px 4px 1px #fff;
   -webkit-animation: shakeAnim 3s forwards;
           animation: shakeAnim 3s forwards;
 }
 
-.wms-head button:focus {
+.wms-head .up:focus {
   outline: none;
 }
 
-.wms-head button img {
+.wms-head .up label {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 3px;
+}
+
+.wms-head .up img {
   display: inline;
   -webkit-animation: shake 3s infinite;
           animation: shake 3s infinite;
@@ -93,6 +98,34 @@
   width: 30%;
   margin: 0 10px;
   height: 100%;
+}
+
+.wms-head .setting {
+  all: unset;
+  cursor: pointer;
+  border-radius: 50%;
+  background: #fff;
+  margin: 0 10px;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  -webkit-box-shadow: 1px 1px 10px 1px #777;
+          box-shadow: 1px 1px 10px 1px #777;
+}
+
+.wms-head .setting:hover {
+  -webkit-animation: rot 2s infinite;
+          animation: rot 2s infinite;
+}
+
+.wms-head .setting:focus {
+  outline: none;
+}
+
+.wms-head .setting img {
+  margin: 0;
+  display: inline;
 }
 
 .wms-main {
@@ -246,13 +279,56 @@
   left: 50px;
 }
 
-@media (max-width: 768px) {
-  .wms-head #search {
-    width: 9rem;
+@media (max-width: 700px) {
+  .wms-head {
+    margin-bottom: 10px;
   }
-  .wms-head button {
-    font-size: 14px;
-    width: 3rem;
+  .wms-head #search {
+    width: 80%;
+    margin: 0 10px;
+  }
+  .wms-head .up {
+    text-align: center;
+    padding: 5px 0;
+    margin: 0;
+    width: 2.6rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+  .wms-head .up label {
+    display: none;
+  }
+  .wms-head .up img {
+    margin: 0;
+    width: 70%;
+  }
+  .wms-head .setting {
+    margin: 0;
+    padding: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@-webkit-keyframes rot {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rot {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -539,6 +615,106 @@ a:hover, a:active {
   display: none;
 }
 
+.dashboard {
+  z-index: 100;
+  position: fixed;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80vh;
+  background: white;
+  -webkit-box-shadow: 0 2px 8px #555;
+          box-shadow: 0 2px 8px #555;
+  border-radius: 10px;
+}
+
+.dashboard .menu {
+  width: 15%;
+  height: 100%;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.dashboard .menu .item-list {
+  list-style-type: none;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dashboard .menu .item-list .item {
+  margin: 20px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dashboard .menu .item-list .item label {
+  cursor: pointer;
+  margin: auto;
+  text-align: center;
+  display: block;
+  background: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.dashboard .menu .item-list .item label img {
+  margin: 10px;
+  width: 60%;
+  height: 60%;
+}
+
+.dashboard .main {
+  -webkit-box-shadow: 0px 1px 5px 1px #aaa;
+          box-shadow: 0px 1px 5px 1px #aaa;
+  border-radius: 10px;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+}
+
+.dashboard-enter {
+  -webkit-transform: translateX(-10rem);
+          transform: translateX(-10rem);
+  opacity: 0;
+}
+
+.dashboard-enter-active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.dashboard-exit {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+}
+
+.dashboard-exit-active {
+  -webkit-transform: translateX(-10rem);
+          transform: translateX(-10rem);
+  opacity: 0;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
 .slide-in-left-enter {
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
@@ -584,6 +760,41 @@ a:hover, a:active {
     width: 30%;
     font-size: 12px;
     padding: 1px;
+  }
+  .dashboard {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .dashboard .menu {
+    border-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+    height: 15%;
+  }
+  .dashboard .menu .item-list {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .dashboard .menu .item-list .item {
+    padding: 10px;
+    margin: 10px;
+    height: 50px;
+    font-size: 2.5vmin;
+  }
+  .dashboard .menu .item-list .item label {
+    width: 35px;
+    height: 35px;
+  }
+  .dashboard .menu .item-list .item label img {
+    margin: 5px;
   }
 }
 

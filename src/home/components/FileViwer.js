@@ -34,7 +34,8 @@ const FileViwer = (props) => {
    const showOptHandler = (event) => {
       const id = event.target.parentElement.parentElement.dataset.id;
       setDocId(id);
-      props.setFields(props.files.find((file) => file._id === id).structure);
+      const file = props.files.find((file) => file.id === id);
+      if (file) props.setFields(file.structure);
       const pareCor = pareNode.current.getBoundingClientRect();
       const cor = event.target.getBoundingClientRect();
       let X = cor.left - 50;
@@ -54,10 +55,8 @@ const FileViwer = (props) => {
       const query = event.target.textContent;
       switch (query) {
          case 'Preview':
-            window.open(
-               process.env.REACT_APP_STORE +
-                  props.files.find((file) => file._id === docId).path
-            );
+            let path = props.files.find((file) => file.id === docId).path;
+            if (path) window.open(process.env.REACT_APP_STORE + path);
             break;
          case 'Download':
             props.downloadItemHandler(docId);
@@ -80,7 +79,9 @@ const FileViwer = (props) => {
             show={showDeleleModal}
             onCancel={() => setShowDeleteModal(false)}
          >
-            <h5>are you sure you want to delete this file ?</h5>
+            <h5 style={{ color: '#666' }}>
+               Are you sure you want to delete this file ?
+            </h5>
             <div className="center">
                <button
                   type="button"

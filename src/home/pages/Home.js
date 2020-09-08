@@ -9,7 +9,9 @@ import Modal from '../../shared/components/UIElements/Modal';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import { AuthContext } from '../../shared/context/auth-context';
 import up from '../../assets/svg/up-arrow.svg';
+import admin from '../../assets/svg/admin.svg';
 import axios from 'axios';
+import Dashboard from '../components/Dashboard';
 
 const Home = () => {
    const fieldsState = [
@@ -23,6 +25,7 @@ const Home = () => {
    const [query, setQuery] = useState();
    const [reload, setReload] = useState(false);
    const [showModal, setShowModal] = useState(false);
+   const [showlistUsers, setShowListUsers] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
    const [isUploading, setIsUploading] = useState(false);
    const [error, setError] = useState(false);
@@ -90,6 +93,7 @@ const Home = () => {
    };
    const cleanModel = () => {
       setShowModal(false);
+      setShowListUsers(false);
       setFields(fieldsState);
    };
 
@@ -182,19 +186,28 @@ const Home = () => {
                setFields={setFields}
             />
          </Modal>
+         <Dashboard show={showlistUsers} onCancel={cleanModel}>
+            {isLoading && <LoadingSpinner asOverlay />}
+         </Dashboard>
          <div className="home">
             <div className="wms-head">
                <button
+                  className="up"
                   onClick={() => {
                      setShowModal(true);
+                     setFields(fieldsState);
                   }}
                >
-                  <span>
-                     <img src={up} alt="up" />
-                  </span>
-                  NEW
+                  <img src={up} alt="up" />
+                  <label>New</label>
                </button>
                <Search onChange={onChangeSearchHandler}></Search>
+               <button
+                  className="setting"
+                  onClick={() => setShowListUsers(true)}
+               >
+                  <img src={admin} alt="admin" />
+               </button>
             </div>
             <main className="wms-main">
                <FileViwer

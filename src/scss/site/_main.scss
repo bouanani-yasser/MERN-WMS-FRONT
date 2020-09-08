@@ -1,19 +1,20 @@
 .wms-head {
    display: flex;
-   width: 90%;
+   width: 100%;
    margin: 0 auto;
+   margin-bottom: 15px;
    flex-direction: row;
    justify-content: center;
    justify-items: center;
    align-items: center;
-   padding: 5px 10px;
+   padding: 5px 30px;
 
    #search {
       all: unset;
       margin: 10px 20px;
       background: #fff;
       font-weight: 500;
-      width: 60vw;
+      width: 50vw;
       height: 1.9rem;
       border-radius: 10px;
       padding: 5px 10px;
@@ -23,15 +24,13 @@
       }
    }
 
-   button {
+   .up {
       all: unset;
+      cursor: pointer;
       margin: 0 10px;
       width: 120px;
-      min-width: 90px;
       height: 2rem;
       border-radius: 10px;
-      font-weight: bold;
-      font-size: px;
       background: #fff;
       color: #03907c;
       padding: 5px;
@@ -42,6 +41,11 @@
       &:focus {
          outline: none;
       }
+      label {
+         font-weight: bold;
+         font-size: 18px;
+         margin: 3px;
+      }
       img {
          display: inline;
          animation: shake 3s infinite;
@@ -49,6 +53,28 @@
          width: 30%;
          margin: 0 10px;
          height: 100%;
+      }
+   }
+   .setting {
+      all: unset;
+      cursor: pointer;
+      border-radius: 50%;
+      background: #fff;
+      margin: 0 10px;
+      padding: 0;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      box-shadow: 1px 1px 10px 1px #777;
+      &:hover {
+         animation: rot 2s infinite;
+      }
+      &:focus {
+         outline: none;
+      }
+      img {
+         margin: 0;
+         display: inline;
       }
    }
 }
@@ -160,15 +186,43 @@
    left: 50px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
    .wms-head {
+      margin-bottom: 10px;
       #search {
-         width: 9rem;
+         width: 80%;
+         margin: 0 10px;
       }
-      button {
-         font-size: 14px;
-         width: 3rem;
+      .up {
+         text-align: center;
+         padding: 5px 0;
+         margin: 0;
+         width: 2.6rem;
+         height: 2rem;
+         border-radius: 50%;
+         label {
+            display: none;
+         }
+         img {
+            margin: 0;
+            width: 70%;
+         }
       }
+      .setting {
+         margin: 0;
+         padding: 0;
+         width: 2.5rem;
+         height: 2.5rem;
+      }
+   }
+}
+
+@keyframes rot {
+   from {
+      transform: rotate(0);
+   }
+   to {
+      transform: rotate(360deg);
    }
 }
 
