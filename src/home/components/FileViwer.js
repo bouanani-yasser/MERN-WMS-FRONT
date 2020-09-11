@@ -119,7 +119,16 @@ const FileViwer = (props) => {
                   fieldsChange={props.fieldsChange}
                   setFields={props.setFields}
                />
-               <button className="btn btn-info">Update</button>
+               <button
+                  style={{ margin: '10px' }}
+                  className="btn btn-info"
+                  onClick={() => {
+                     props.updateHandler(docId);
+                     setShowModifyModal(false);
+                  }}
+               >
+                  UPDATE
+               </button>
             </div>
          </Modal>
          {showOpt && (

@@ -16,7 +16,7 @@ const ErrorModal = (props) => {
             </button>
          }
       >
-         <p>{props.error}</p>
+         {props.error && <p>{props.error.message}</p>}
       </Modal>
    );
 };

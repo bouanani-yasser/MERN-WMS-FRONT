@@ -110,13 +110,13 @@
   width: 50px;
   height: 50px;
   text-align: center;
-  -webkit-box-shadow: 1px 1px 10px 1px #777;
-          box-shadow: 1px 1px 10px 1px #777;
+  -webkit-box-shadow: 1px 1px 5px 1px #777;
+          box-shadow: 1px 1px 5px 1px #777;
 }
 
 .wms-head .setting:hover {
-  -webkit-animation: rot 2s infinite;
-          animation: rot 2s infinite;
+  -webkit-box-shadow: 1px 1px 10px 1px #777;
+          box-shadow: 1px 1px 10px 1px #777;
 }
 
 .wms-head .setting:focus {
@@ -291,22 +291,26 @@
     text-align: center;
     padding: 5px 0;
     margin: 0;
-    width: 2.6rem;
-    height: 2rem;
+    width: 40px;
+    height: 30px;
     border-radius: 50%;
   }
   .wms-head .up label {
     display: none;
   }
   .wms-head .up img {
-    margin: 0;
-    width: 70%;
+    margin: 2px;
+    width: 80%;
   }
   .wms-head .setting {
     margin: 0;
     padding: 0;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 40px;
+    height: 40px;
+  }
+  .wms-head .setting img {
+    margin: 2px;
+    width: 90%;
   }
 }
 

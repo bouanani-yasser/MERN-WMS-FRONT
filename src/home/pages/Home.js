@@ -21,14 +21,14 @@ const Home = () => {
    ];
    const auth = useContext(AuthContext);
    const [fields, setFields] = useState(fieldsState);
-   const [data, setData] = useState({});
+   const [data, setData] = useState([]);
    const [query, setQuery] = useState();
    const [reload, setReload] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [showlistUsers, setShowListUsers] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
    const [isUploading, setIsUploading] = useState(false);
-   const [error, setError] = useState(false);
+   const [error, setError] = useState(null);
    const [formState, inputHandler, setFormData] = useForm(
       {
          file: {
@@ -52,9 +52,10 @@ const Home = () => {
                setIsLoading(false);
             } catch (err) {
                console.log('data' + err);
-               setError(true);
+               setIsLoading(false);
+               setError(err);
             }
-         }, 0);
+         }, 1000);
       };
 
       fetchData();
@@ -75,7 +76,7 @@ const Home = () => {
          setData(result.data.Docs);
       } catch (err) {
          console.log('err ' + err);
-         setError(true);
+         setError(err);
       }
       // setIsLoading(false);
    };
@@ -89,7 +90,7 @@ const Home = () => {
    };
 
    const clearError = () => {
-      setError(false);
+      setError(null);
    };
    const cleanModel = () => {
       setShowModal(false);
@@ -111,17 +112,15 @@ const Home = () => {
                },
             })
             .then(function (response) {
-               // handle success
                console.log(response);
                setIsUploading(false);
                cleanModel();
                setReload((prev) => !prev);
             })
             .catch(function (error) {
-               // handle error
                setIsUploading(false);
                cleanModel();
-               setError(true);
+               setError(error);
                console.log(error);
             });
       }, 0);
@@ -135,6 +134,29 @@ const Home = () => {
          },
          false
       );
+   };
+
+   const updateHandler = (docId) => {
+      setTimeout(() => {
+         axios
+            .patch(
+               `${process.env.REACT_APP_BACKEND_URL}docs/update/${docId}`,
+               { str: JSON.stringify(fields) },
+               {
+                  headers: {
+                     Authorization: 'Bearer ' + auth.token,
+                  },
+               }
+            )
+            .then(function (response) {
+               console.log('update', response);
+               setReload((prev) => !prev);
+            })
+            .catch(function (error) {
+               setError(error);
+               console.log('update', error);
+            });
+      }, 0);
    };
 
    const removeItemHandler = async (docId) => {
@@ -154,7 +176,7 @@ const Home = () => {
       } catch (err) {
          console.log('data' + err);
          setIsLoading(false);
-         setError(true);
+         setError(err);
       }
    };
 
@@ -167,7 +189,7 @@ const Home = () => {
          window.open(result.config.url);
       } catch (err) {
          console.log('err' + err);
-         setError(true);
+         setError(err);
       }
    };
 
@@ -213,6 +235,7 @@ const Home = () => {
                <FileViwer
                   removeItemHandler={removeItemHandler}
                   downloadItemHandler={downloadItemHandler}
+                  updateHandler={updateHandler}
                   files={data}
                   search={query}
                   loading={isLoading}
