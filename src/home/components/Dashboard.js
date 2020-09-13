@@ -6,6 +6,7 @@ import user from '../../assets/svg/user.svg';
 import list from '../../assets/svg/list.svg';
 import New from '../../assets/svg/new.svg';
 import settings from '../../assets/svg/settings.svg';
+import close from '../../assets/svg/close.svg';
 
 const Dashboard = (props) => {
    const [content, setContent] = useState();
@@ -21,6 +22,9 @@ const Dashboard = (props) => {
             classNames="dashboard"
          >
             <section className="dashboard">
+               <div className="btn-close" onClick={props.onCancel}>
+                  <img src={close} alt="close" />
+               </div>
                <aside className="menu">
                   <ul className="item-list">
                      <li className="item" onClick={() => setContent(Acount)}>

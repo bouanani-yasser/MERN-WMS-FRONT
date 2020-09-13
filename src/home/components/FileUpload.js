@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import Button from '../../shared/components/FormElements/Button';
 import FileStructure from './FileStructure';
 import ItemFile from './ItemFile';
+import close from '../../assets/svg/close.svg';
 
 const FileUpload = (props) => {
    const [file, setFile] = useState();
@@ -43,6 +44,9 @@ const FileUpload = (props) => {
 
    return (
       <div className="upload-modal">
+         <div className="btn-close" onClick={props.onCancel}>
+            <img src={close} alt="close" />
+         </div>
          <form
             className="form-upload"
             encType="multipart/form-data"

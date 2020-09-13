@@ -48,8 +48,19 @@ a {
    text-align: center;
    width: 100%;
    height: 100%;
-   max-height: 55vh;
+   max-height: 60vh;
 
+   .btn-close {
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      opacity: 0.5;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+   }
    .file-str {
       padding: 0px 10px;
       margin: 0 10px;
@@ -129,6 +140,17 @@ a {
    box-shadow: 0 2px 8px #555;
    border-radius: 10px;
 
+   .btn-close {
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      opacity: 0.5;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+   }
    .menu {
       width: 15%;
       height: 100%;
@@ -225,16 +247,21 @@ a {
 }
 
 @media (max-width: 768px) {
-   .upload-modal .file-str .item-str {
-      input {
-         width: 30%;
-         font-size: 12px;
-         padding: 1px;
+   .upload-modal {
+      max-height: 65%;
+      .file-str .item-str {
+         input {
+            width: 30%;
+            font-size: 12px;
+            padding: 1px;
+         }
       }
    }
 
    .dashboard {
       flex-direction: column-reverse;
+      top: 15%;
+      height: 70vh;
       .menu {
          border-radius: 0;
          border-bottom-left-radius: 10px;

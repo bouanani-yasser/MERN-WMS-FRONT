@@ -206,6 +206,7 @@ const Home = () => {
                isValid={formState.isValid}
                fieldsChange={onChangeHandler}
                setFields={setFields}
+               onCancel={cleanModel}
             />
          </Modal>
          <Dashboard show={showlistUsers} onCancel={cleanModel}>

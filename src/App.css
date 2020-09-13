@@ -522,7 +522,20 @@ a:hover, a:active {
   text-align: center;
   width: 100%;
   height: 100%;
-  max-height: 55vh;
+  max-height: 60vh;
+}
+
+.upload-modal .btn-close {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: #fff;
+  opacity: 0.5;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
 
 .upload-modal .file-str {
@@ -634,6 +647,19 @@ a:hover, a:active {
   -webkit-box-shadow: 0 2px 8px #555;
           box-shadow: 0 2px 8px #555;
   border-radius: 10px;
+}
+
+.dashboard .btn-close {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: #fff;
+  opacity: 0.5;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
 
 .dashboard .menu {
@@ -760,6 +786,9 @@ a:hover, a:active {
 }
 
 @media (max-width: 768px) {
+  .upload-modal {
+    max-height: 65%;
+  }
   .upload-modal .file-str .item-str input {
     width: 30%;
     font-size: 12px;
@@ -770,6 +799,8 @@ a:hover, a:active {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
+    top: 15%;
+    height: 70vh;
   }
   .dashboard .menu {
     border-radius: 0;
