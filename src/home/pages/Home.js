@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 
-import FileViwer from '../components/FileViwer';
+import FileViewer from '../components/FileViewer';
 import Search from '../components/Search';
 import { useForm } from '../../shared/hooks/form-hook';
 import FileUpload from '../components/FileUpload';
@@ -11,7 +11,7 @@ import { AuthContext } from '../../shared/context/auth-context';
 import up from '../../assets/svg/up-arrow.svg';
 import admin from '../../assets/svg/admin.svg';
 import axios from 'axios';
-import Dashboard from '../components/Dashboard';
+import Dashboard from '../../dashboard/pages/Dashboard';
 
 const Home = () => {
    const fieldsState = [
@@ -25,7 +25,7 @@ const Home = () => {
    const [query, setQuery] = useState();
    const [reload, setReload] = useState(false);
    const [showModal, setShowModal] = useState(false);
-   const [showlistUsers, setShowListUsers] = useState(false);
+   const [showDashboard, setShowDashboard] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
    const [isUploading, setIsUploading] = useState(false);
    const [error, setError] = useState(null);
@@ -44,12 +44,14 @@ const Home = () => {
          setIsLoading(true);
          setTimeout(async () => {
             try {
-               const result = await axios(
-                  `${process.env.REACT_APP_BACKEND_URL}docs/list/${auth.userId}`
-               );
-               setData(result.data.Docs);
-               console.log('docs', result.data.Docs);
-               setIsLoading(false);
+               if (auth.userId) {
+                  const result = await axios(
+                     `${process.env.REACT_APP_BACKEND_URL}docs/list/${auth.userId}`
+                  );
+                  setData(result.data.Docs);
+                  // console.log('docs', result.data.Docs);
+                  setIsLoading(false);
+               }
             } catch (err) {
                console.log('data' + err);
                setIsLoading(false);
@@ -94,7 +96,7 @@ const Home = () => {
    };
    const cleanModel = () => {
       setShowModal(false);
-      setShowListUsers(false);
+      setShowDashboard(false);
       setFields(fieldsState);
    };
 
@@ -112,7 +114,6 @@ const Home = () => {
                },
             })
             .then(function (response) {
-               console.log(response);
                setIsUploading(false);
                cleanModel();
                setReload((prev) => !prev);
@@ -149,7 +150,6 @@ const Home = () => {
                }
             )
             .then(function (response) {
-               console.log('update', response);
                setReload((prev) => !prev);
             })
             .catch(function (error) {
@@ -162,7 +162,7 @@ const Home = () => {
    const removeItemHandler = async (docId) => {
       setIsLoading(true);
       try {
-         const result = await axios.delete(
+         await axios.delete(
             `${process.env.REACT_APP_BACKEND_URL}docs/remove/${docId}`,
             {
                headers: {
@@ -170,7 +170,6 @@ const Home = () => {
                },
             }
          );
-         console.log('res ', result);
          setReload((prev) => !prev);
          setIsLoading(false);
       } catch (err) {
@@ -185,7 +184,6 @@ const Home = () => {
          const result = await axios(
             `${process.env.REACT_APP_BACKEND_URL}docs/download/${docId}`
          );
-         console.log('d', result.config.url);
          window.open(result.config.url);
       } catch (err) {
          console.log('err' + err);
@@ -209,7 +207,11 @@ const Home = () => {
                onCancel={cleanModel}
             />
          </Modal>
-         <Dashboard show={showlistUsers} onCancel={cleanModel}>
+         <Dashboard
+            show={showDashboard}
+            setShow={setShowDashboard}
+            onCancel={cleanModel}
+         >
             {isLoading && <LoadingSpinner asOverlay />}
          </Dashboard>
          <div className="home">
@@ -227,13 +229,13 @@ const Home = () => {
                <Search onChange={onChangeSearchHandler}></Search>
                <button
                   className="setting"
-                  onClick={() => setShowListUsers(true)}
+                  onClick={() => setShowDashboard(true)}
                >
                   <img src={admin} alt="admin" />
                </button>
             </div>
             <main className="wms-main">
-               <FileViwer
+               <FileViewer
                   removeItemHandler={removeItemHandler}
                   downloadItemHandler={downloadItemHandler}
                   updateHandler={updateHandler}
@@ -244,7 +246,7 @@ const Home = () => {
                   fields={fields}
                   setFields={setFields}
                   fieldsState={fieldsState}
-               ></FileViwer>
+               ></FileViewer>
             </main>
          </div>
       </React.Fragment>

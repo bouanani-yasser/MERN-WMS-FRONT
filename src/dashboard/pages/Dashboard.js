@@ -7,10 +7,12 @@ import list from '../../assets/svg/list.svg';
 import New from '../../assets/svg/new.svg';
 import settings from '../../assets/svg/settings.svg';
 import close from '../../assets/svg/close.svg';
+import NewUserForm from '../components/NewUserForm';
+import UserInfo from '../components/UserInfo';
+import UsersList from '../components/UsersList';
 
 const Dashboard = (props) => {
-   const [content, setContent] = useState();
-
+   const [content, setContent] = useState(<UserInfo />);
    return (
       <React.Fragment>
          {props.show && <Backdrop onClick={props.onCancel} />}
@@ -27,23 +29,39 @@ const Dashboard = (props) => {
                </div>
                <aside className="menu">
                   <ul className="item-list">
-                     <li className="item" onClick={() => setContent(Acount)}>
+                     <li
+                        className="item"
+                        onClick={() => setContent(<UserInfo />)}
+                     >
                         <label>
                            <img src={user} alt="user" />
                         </label>
-                        Acount
+                        Account
                      </li>
-                     <li className="item" onClick={() => setContent(ListUser)}>
-                        <label>
-                           <img src={list} alt="list" />
-                        </label>
-                        Users
-                     </li>
-                     <li className="item" onClick={() => setContent(NewUser)}>
+                     <li
+                        className="item"
+                        onClick={() =>
+                           setContent(
+                              <NewUserForm
+                                 setContent={setContent}
+                                 setShow={props.setShow}
+                              />
+                           )
+                        }
+                     >
                         <label>
                            <img src={New} alt="new" />
                         </label>
                         New
+                     </li>
+                     <li
+                        className="item"
+                        onClick={() => setContent(<UsersList />)}
+                     >
+                        <label>
+                           <img src={list} alt="list" />
+                        </label>
+                        Users
                      </li>
                      <li className="item" onClick={() => setContent(Settings)}>
                         <label>
@@ -60,21 +78,6 @@ const Dashboard = (props) => {
    );
 };
 
-const Acount = () => (
-   <div>
-      <h1>Acount</h1>
-   </div>
-);
-const ListUser = () => (
-   <div>
-      <h1>ListUser</h1>
-   </div>
-);
-const NewUser = () => (
-   <div>
-      <h1>NewUser</h1>
-   </div>
-);
 const Settings = () => (
    <div>
       <h1>Setting</h1>

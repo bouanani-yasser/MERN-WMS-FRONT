@@ -147,7 +147,7 @@
   overflow: hidden;
 }
 
-.wms-main .files-viwer {
+.wms-main .files-viewer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -167,7 +167,7 @@
   overflow: auto;
 }
 
-.wms-main .files-viwer .option {
+.wms-main .files-viewer .option {
   z-index: 100;
   -webkit-box-shadow: 0px 1px 5px 1px #ccc;
           box-shadow: 0px 1px 5px 1px #ccc;
@@ -178,7 +178,7 @@
   width: 150px;
 }
 
-.wms-main .files-viwer .option ul {
+.wms-main .files-viewer .option ul {
   margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -195,7 +195,7 @@
   list-style: none;
 }
 
-.wms-main .files-viwer .option ul li {
+.wms-main .files-viewer .option ul li {
   cursor: pointer;
   border-radius: 10px;
   text-align: center;
@@ -204,13 +204,13 @@
   margin: 2px 0;
 }
 
-.wms-main .files-viwer .option ul li:hover {
+.wms-main .files-viewer .option ul li:hover {
   background: #eee;
   -webkit-transition: all ease-in 200ms;
   transition: all ease-in 200ms;
 }
 
-.wms-main .files-viwer .item-file {
+.wms-main .files-viewer .item-file {
   cursor: pointer;
   position: relative;
   display: -webkit-box;
@@ -235,13 +235,13 @@
   overflow: hidden;
 }
 
-.wms-main .files-viwer .item-file img {
+.wms-main .files-viewer .item-file img {
   width: 50%;
   height: 80%;
   margin: 10px;
 }
 
-.wms-main .files-viwer .item-file p {
+.wms-main .files-viewer .item-file p {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: right;
@@ -249,7 +249,7 @@
   width: 80%;
 }
 
-.wms-main .files-viwer .item-file label {
+.wms-main .files-viewer .item-file label {
   display: none;
   position: absolute;
   top: 0;
@@ -258,17 +258,17 @@
   height: 30px;
 }
 
-.wms-main .files-viwer .item-file label img {
+.wms-main .files-viewer .item-file label img {
   width: 100%;
   height: 100%;
   border-radius: 5px;
 }
 
-.wms-main .files-viwer .item-file:hover {
+.wms-main .files-viewer .item-file:hover {
   background: #eee;
 }
 
-.wms-main .files-viwer .item-file:hover label {
+.wms-main .files-viewer .item-file:hover label {
   display: block;
 }
 
@@ -709,12 +709,151 @@ a:hover, a:active {
 }
 
 .dashboard .main {
-  -webkit-box-shadow: 0px 1px 5px 1px #aaa;
-          box-shadow: 0px 1px 5px 1px #aaa;
-  border-radius: 10px;
+  border-radius: 20px;
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin: auto;
   width: 80%;
   height: 80%;
+  background-color: #eeefff;
+}
+
+.dashboard .main .user-info {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.dashboard .main .user-info .item {
+  margin: 5px 0;
+  padding: 5px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  width: 80%;
+  font-size: 1.6vmax;
+}
+
+.dashboard .main .user-info label {
+  font-weight: 500;
+  border-radius: 8px;
+  margin: 0 5px;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.dashboard .main .new-user-form {
+  width: 80%;
+  height: 70%;
+}
+
+.dashboard .main .users-list {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow: auto;
+}
+
+.dashboard .main .users-list .user-wrap {
+  width: 99%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  margin: 5px;
+  padding: 5px 10px;
+}
+
+.dashboard .main .users-list .user-wrap .user-item {
+  width: 100%;
+  padding: 10px;
+  margin: 5px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.dashboard .main .users-list .user-wrap .user-item .info {
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  text-align: left;
+  font-weight: 500;
+  padding: 10px;
+  width: 60%;
+  height: 100%;
+  margin-right: auto;
+  display: inline;
+}
+
+.dashboard .main .users-list .user-wrap .user-item .info label {
+  margin: auto 10px;
+}
+
+.dashboard .main .users-list .user-wrap .user-item .btns {
+  margin-top: 0;
+  margin-right: 0;
+  width: 40%;
+  height: 100%;
+  display: inline;
+}
+
+.dashboard .main .users-list .user-wrap .user-item .btns button {
+  font-weight: 500;
+  width: 80px;
+  margin: 5px;
+}
+
+.dashboard .main .users-list .user-wrap .user-form {
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 15px;
+  padding: 10px 20px;
+  background-color: #fff;
+  height: 100%;
 }
 
 .dashboard-enter {
@@ -743,6 +882,34 @@ a:hover, a:active {
   opacity: 0;
   -webkit-transition: all 200ms;
   transition: all 200ms;
+}
+
+.user-form-enter {
+  -webkit-transform: translateX(-5rem);
+          transform: translateX(-5rem);
+  opacity: 0;
+}
+
+.user-form-enter-active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.user-form-exit {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+}
+
+.user-form-exit-active {
+  -webkit-transform: translateX(-5rem);
+          transform: translateX(-5rem);
+  opacity: 0;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
 }
 
 .slide-in-left-enter {
@@ -836,6 +1003,13 @@ a:hover, a:active {
 @media (max-width: 500px) {
   #root {
     background-image: url("./assets/svg/skew-mobile.svg");
+  }
+  .main .users-list .user-item .btns button {
+    width: 20px;
+    font-size: 1.2vmax;
+  }
+  .main .users-list .user-item .info {
+    text-align: center;
   }
 }
 /*# sourceMappingURL=App.css.map */

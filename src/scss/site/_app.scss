@@ -188,11 +188,104 @@ a {
       }
    }
    .main {
-      box-shadow: 0px 1px 5px 1px #aaa;
-      border-radius: 10px;
+      border-radius: 20px;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       margin: auto;
       width: 80%;
       height: 80%;
+      background-color: #eeefff;
+
+      .user-info {
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items: center;
+         align-content: center;
+         .item {
+            margin: 5px 0;
+            padding: 5px 0px;
+            display: flex;
+            justify-content: left;
+            width: 80%;
+            font-size: 1.6vmax;
+         }
+         label {
+            font-weight: 500;
+            border-radius: 8px;
+            margin: 0 5px;
+            padding: 10px 20px;
+            background-color: #fff;
+         }
+      }
+
+      .new-user-form {
+         width: 80%;
+         height: 70%;
+      }
+      .users-list {
+         width: 100%;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         overflow: auto;
+         .user-wrap {
+            width: 99%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            justify-items: center;
+            margin: 5px;
+            padding: 5px 10px;
+            .user-item {
+               width: 100%;
+               padding: 10px;
+               margin: 5px auto;
+               display: flex;
+               justify-content: space-around;
+               transition: all 200ms;
+               .info {
+                  transition: all 200ms;
+                  text-align: left;
+                  font-weight: 500;
+                  padding: 10px;
+                  width: 60%;
+                  height: 100%;
+                  margin-right: auto;
+                  display: inline;
+                  label {
+                     margin: auto 10px;
+                  }
+               }
+               .btns {
+                  margin-top: 0;
+                  margin-right: 0;
+                  width: 40%;
+                  height: 100%;
+                  display: inline;
+
+                  button {
+                     font-weight: 500;
+                     width: 80px;
+                     margin: 5px;
+                  }
+               }
+            }
+
+            .user-form {
+               margin: 0 auto;
+               width: 100%;
+               border-radius: 15px;
+               padding: 10px 20px;
+               background-color: #fff;
+               height: 100%;
+            }
+         }
+      }
    }
 }
 
@@ -216,6 +309,28 @@ a {
    transform: translateX(-10rem);
    opacity: 0;
    transition: all 200ms;
+}
+
+.user-form-enter {
+   transform: translateX(-5rem);
+   opacity: 0;
+}
+
+.user-form-enter-active {
+   transform: translateX(0);
+   opacity: 1;
+   transition: all 200ms;
+}
+
+.user-form-exit {
+   transform: translateX(0);
+   opacity: 1;
+}
+
+.user-form-exit-active {
+   transform: translateX(-5rem);
+   opacity: 0;
+   transition: all 100ms;
 }
 
 .slide-in-left-enter {
@@ -292,5 +407,21 @@ a {
 @media (max-width: 500px) {
    #root {
       background-image: url('./assets/svg/skew-mobile.svg');
+   }
+
+   .main {
+      .users-list {
+         .user-item {
+            .btns {
+               button {
+                  width: 20px;
+                  font-size: 1.2vmax;
+               }
+            }
+            .info {
+               text-align: center;
+            }
+         }
+      }
    }
 }

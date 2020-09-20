@@ -2,13 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import Modal from '../../shared/components/UIElements/Modal';
+import ConfModal from '../../shared/components/UIElements/ConfModal';
 import FileStructure from './FileStructure';
 import ItemFile from './ItemFile';
-const FileViwer = (props) => {
+const FileViewer = (props) => {
    const [showOpt, setShowOpt] = useState(false);
    const [corOpt, setCorOpt] = useState({ x: null, y: null });
    const [docId, setDocId] = useState();
-   const [showDeleleModal, setShowDeleteModal] = useState(false);
+   const [showDeleteModal, setShowDeleteModal] = useState(false);
    const [showModifyModal, setShowModifyModal] = useState(false);
    const Node = useRef();
    const pareNode = useRef();
@@ -73,39 +74,18 @@ const FileViwer = (props) => {
       setShowOpt(false);
    };
 
+   const removeHandler = () => {
+      props.removeItemHandler(docId);
+   };
+
    return (
-      <div className="files-viwer" ref={pareNode}>
-         <Modal
-            show={showDeleleModal}
-            onCancel={() => setShowDeleteModal(false)}
-         >
-            <h5 style={{ color: '#666' }}>
-               Are you sure you want to delete this file ?
-            </h5>
-            <div className="center">
-               <button
-                  type="button"
-                  className="btn btn-danger"
-                  style={{ margin: '10px 20px' }}
-                  onClick={() => {
-                     props.removeItemHandler(docId);
-                     setShowDeleteModal(false);
-                  }}
-               >
-                  Delete
-               </button>
-               <button
-                  type="button"
-                  className="btn btn-secondary"
-                  style={{ margin: '10px 20px' }}
-                  onClick={() => {
-                     setShowDeleteModal(false);
-                  }}
-               >
-                  Cancel
-               </button>
-            </div>
-         </Modal>
+      <div className="files-viewer" ref={pareNode}>
+         <ConfModal
+            msg="Are you sure you want to delete this file ? "
+            show={showDeleteModal}
+            setShow={setShowDeleteModal}
+            removeHandler={removeHandler}
+         />
          <Modal
             show={showModifyModal}
             onCancel={() => {
@@ -173,4 +153,4 @@ const FileViwer = (props) => {
    );
 };
 
-export default FileViwer;
+export default FileViewer;

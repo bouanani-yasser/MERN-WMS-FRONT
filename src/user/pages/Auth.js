@@ -75,8 +75,14 @@ const Auth = () => {
                   'Content-Type': 'application/json',
                }
             );
-            auth.login(responseData.userId, responseData.token);
-         } catch (err) {}
+            auth.login(
+               responseData.userId,
+               responseData.role,
+               responseData.token
+            );
+         } catch (err) {
+            console.log('err-login', err);
+         }
       } else {
          try {
             console.log(`${process.env.REACT_APP_BACKEND_URL}users/signup`);
@@ -92,7 +98,12 @@ const Auth = () => {
                   'Content-Type': 'application/json',
                }
             );
-            auth.login(responseData.userId, responseData.token);
+
+            auth.login(
+               responseData.userId,
+               responseData.role,
+               responseData.token
+            );
          } catch (err) {}
       }
    };

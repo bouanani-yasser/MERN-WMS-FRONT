@@ -51,10 +51,10 @@ const App = () => {
       <AuthContext.Provider
          value={{
             isLoggedIn: !!token,
-            token: token,
-            userId: userId,
-            login: login,
-            logout: logout,
+            token,
+            userId,
+            login,
+            logout,
          }}
       >
          <Router>
