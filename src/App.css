@@ -709,6 +709,7 @@ a:hover, a:active {
 }
 
 .dashboard .main {
+  position: relative;
   border-radius: 20px;
   padding: 20px 0;
   display: -webkit-box;
@@ -772,6 +773,7 @@ a:hover, a:active {
 }
 
 .dashboard .main .users-list {
+  position: relative;
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -849,6 +851,7 @@ a:hover, a:active {
 
 .dashboard .main .users-list .user-wrap .user-form {
   margin: 0 auto;
+  position: relative;
   width: 100%;
   border-radius: 15px;
   padding: 10px 20px;

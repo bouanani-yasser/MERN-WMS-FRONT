@@ -44,7 +44,7 @@ const Home = () => {
          setIsLoading(true);
          setTimeout(async () => {
             try {
-               if (auth.userId) {
+               if (auth.userId && auth.userRole) {
                   const result = await axios(
                      `${process.env.REACT_APP_BACKEND_URL}docs/list/${auth.userId}`
                   );
@@ -61,7 +61,7 @@ const Home = () => {
       };
 
       fetchData();
-   }, [reload, auth.userId]);
+   }, [reload, auth]);
 
    const onChangeSearchHandler = async (event) => {
       // setIsLoading(true);
@@ -246,6 +246,7 @@ const Home = () => {
                   fields={fields}
                   setFields={setFields}
                   fieldsState={fieldsState}
+                  auth={auth}
                ></FileViewer>
             </main>
          </div>

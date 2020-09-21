@@ -58,9 +58,11 @@ const NewUserForm = (props) => {
          );
          if (responseData && !user) {
             props.setContent(<UsersList />);
-         } else {
-            props.reloadList();
+         } else if (responseData && user) {
             props.setShow(false);
+            setTimeout(() => {
+               props.reloadList();
+            }, 300);
          }
       } catch (err) {
          console.log(err);

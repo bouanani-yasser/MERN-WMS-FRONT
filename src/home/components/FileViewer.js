@@ -120,8 +120,12 @@ const FileViewer = (props) => {
                <ul>
                   <li onClick={optionQueryHandler}>Preview</li>
                   <li onClick={optionQueryHandler}>Download</li>
-                  <li onClick={optionQueryHandler}>Remove</li>
-                  <li onClick={optionQueryHandler}>Modify</li>
+                  {props.auth.userRole === 'admin' && (
+                     <li onClick={optionQueryHandler}>Remove</li>
+                  )}
+                  {props.auth.userRole === 'admin' && (
+                     <li onClick={optionQueryHandler}>Modify</li>
+                  )}
                </ul>
             </div>
          )}

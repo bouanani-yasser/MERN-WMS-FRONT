@@ -16,7 +16,7 @@ import { useAuth } from './shared/hooks/auth-hook';
 import './App.css';
 
 const App = () => {
-   const { token, login, logout, userId } = useAuth();
+   const { token, login, logout, userId, userRole } = useAuth();
 
    let routes;
 
@@ -53,6 +53,7 @@ const App = () => {
             isLoggedIn: !!token,
             token,
             userId,
+            userRole,
             login,
             logout,
          }}
