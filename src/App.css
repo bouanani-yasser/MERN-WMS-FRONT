@@ -727,7 +727,9 @@ a:hover, a:active {
   background-color: #eeefff;
 }
 
-.dashboard .main .user-info {
+.dashboard .main .user-account {
+  overflow: auto;
+  width: 100%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -746,7 +748,29 @@ a:hover, a:active {
       align-content: center;
 }
 
-.dashboard .main .user-info .item {
+.dashboard .main .user-account .user-info {
+  width: 80%;
+  margin: 20px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.dashboard .main .user-account .user-info .item {
   margin: 5px 0;
   padding: 5px 0px;
   display: -webkit-box;
@@ -759,12 +783,18 @@ a:hover, a:active {
   font-size: 1.6vmax;
 }
 
-.dashboard .main .user-info label {
+.dashboard .main .user-account .user-info label {
   font-weight: 500;
   border-radius: 8px;
   margin: 0 5px;
-  padding: 10px 20px;
+  padding: 10px;
+}
+
+.dashboard .main .user-account .user-form {
   background-color: #fff;
+  padding: 10px;
+  margin: 20px auto;
+  border-radius: 10px;
 }
 
 .dashboard .main .new-user-form {
@@ -850,13 +880,16 @@ a:hover, a:active {
 }
 
 .dashboard .main .users-list .user-wrap .user-form {
-  margin: 0 auto;
+  -webkit-transition: all 400ms;
+  transition: all 400ms;
   position: relative;
+  margin: 0 auto;
   width: 100%;
+  height: 100%;
   border-radius: 15px;
   padding: 10px 20px;
+  overflow: hidden;
   background-color: #fff;
-  height: 100%;
 }
 
 .dashboard-enter {
@@ -899,6 +932,7 @@ a:hover, a:active {
   opacity: 1;
   -webkit-transition: all 200ms;
   transition: all 200ms;
+  height: 100%;
 }
 
 .user-form-exit {
@@ -1001,6 +1035,9 @@ a:hover, a:active {
   .dashboard .menu .item-list .item label img {
     margin: 5px;
   }
+  .dashboard .menu .user-account {
+    background-color: red;
+  }
 }
 
 @media (max-width: 500px) {
@@ -1013,6 +1050,9 @@ a:hover, a:active {
   }
   .main .users-list .user-item .info {
     text-align: center;
+  }
+  .main .user-account .user-info .item label {
+    padding: 0;
   }
 }
 /*# sourceMappingURL=App.css.map */

@@ -49,7 +49,7 @@ const NewUserForm = (props) => {
                name: formState.inputs.name.value,
                email: formState.inputs.email.value,
                password: !user && formState.inputs.password.value,
-               role: role.current.value,
+               role: !props.admin && role.current.value,
                administrator: auth.userId,
             }),
             {
@@ -59,7 +59,7 @@ const NewUserForm = (props) => {
          if (responseData && !user) {
             props.setContent(<UsersList />);
          } else if (responseData && user) {
-            props.setShow(false);
+            !props.admin && props.setShow(false);
             setTimeout(() => {
                props.reloadList();
             }, 300);
@@ -79,7 +79,7 @@ const NewUserForm = (props) => {
                   <hr style={{ width: '100%' }} />
                </React.Fragment>
             )}
-            {isLoading && <LoadingSpinner asOverlay />}
+            {!user && isLoading && <LoadingSpinner asOverlay />}
             {/* <form autoComplete="off" onSubmit={authSubmitHandler}> */}
             <Input
                element="input"
@@ -92,18 +92,28 @@ const NewUserForm = (props) => {
                errorText="Please enter user's name."
                onInput={inputHandler}
             />
-            <select ref={role} className="custom-select">
-               <option defaultValue value={user ? user.role : 'admin'}>
-                  {user ? user.role : 'admin'}
-               </option>
-               <option
-                  value={
-                     user ? (user.role === 'admin' ? 'user' : 'admin') : 'user'
-                  }
-               >
-                  {user ? (user.role === 'admin' ? 'user' : 'admin') : 'user'}
-               </option>
-            </select>
+            {!props.admin && (
+               <select ref={role} className="custom-select">
+                  <option defaultValue value={user ? user.role : 'admin'}>
+                     {user ? user.role : 'admin'}
+                  </option>
+                  <option
+                     value={
+                        user
+                           ? user.role === 'admin'
+                              ? 'user'
+                              : 'admin'
+                           : 'user'
+                     }
+                  >
+                     {user
+                        ? user.role === 'admin'
+                           ? 'user'
+                           : 'admin'
+                        : 'user'}
+                  </option>
+               </select>
+            )}
             {/* this form tag for disabling autoComplete attribute in Inputs  */}
             <form>
                <Input

@@ -5,7 +5,6 @@ import Backdrop from '../../shared/components/UIElements/Backdrop';
 import user from '../../assets/svg/user.svg';
 import list from '../../assets/svg/list.svg';
 import New from '../../assets/svg/new.svg';
-import settings from '../../assets/svg/settings.svg';
 import close from '../../assets/svg/close.svg';
 import NewUserForm from '../components/NewUserForm';
 import UserInfo from '../components/UserInfo';
@@ -63,12 +62,6 @@ const Dashboard = (props) => {
                         </label>
                         Users
                      </li>
-                     <li className="item" onClick={() => setContent(Settings)}>
-                        <label>
-                           <img src={settings} alt="setting" />
-                        </label>
-                        Setting
-                     </li>
                   </ul>
                </aside>
                <section className="main">{content}</section>
@@ -77,11 +70,5 @@ const Dashboard = (props) => {
       </React.Fragment>
    );
 };
-
-const Settings = () => (
-   <div>
-      <h1>Setting</h1>
-   </div>
-);
 
 export default Dashboard;
