@@ -62,7 +62,7 @@ const NewUserForm = (props) => {
             !props.admin && props.setShow(false);
             setTimeout(() => {
                props.reloadList();
-            }, 300);
+            }, 1000);
          }
       } catch (err) {
          console.log(err);
@@ -81,75 +81,81 @@ const NewUserForm = (props) => {
             )}
             {!user && isLoading && <LoadingSpinner asOverlay />}
             {/* <form autoComplete="off" onSubmit={authSubmitHandler}> */}
-            <Input
-               element="input"
-               id="name"
-               initialValue={user ? user.name : ''}
-               initialValid={!!user}
-               type="text"
-               placeholder="User Name"
-               validators={[VALIDATOR_REQUIRE()]}
-               errorText="Please enter user's name."
-               onInput={inputHandler}
-            />
-            {!props.admin && (
-               <select ref={role} className="custom-select">
-                  <option defaultValue value={user ? user.role : 'admin'}>
-                     {user ? user.role : 'admin'}
-                  </option>
-                  <option
-                     value={
-                        user
-                           ? user.role === 'admin'
-                              ? 'user'
-                              : 'admin'
-                           : 'user'
-                     }
-                  >
-                     {user
-                        ? user.role === 'admin'
-                           ? 'user'
-                           : 'admin'
-                        : 'user'}
-                  </option>
-               </select>
-            )}
-            {/* this form tag for disabling autoComplete attribute in Inputs  */}
-            <form>
-               <Input
-                  element="input"
-                  id="email"
-                  initialValue={user ? user.email : ''}
-                  initialValid={!!user}
-                  type="email"
-                  placeholder="E-Mail"
-                  validators={[VALIDATOR_EMAIL()]}
-                  errorText="Please enter a valid email address."
-                  onInput={inputHandler}
-               />
-            </form>
-            {!user && (
-               <form>
+            {auth.userRole === 'admin' || user ? (
+               <React.Fragment>
                   <Input
                      element="input"
-                     id="password"
-                     type="password"
-                     placeholder="Password"
-                     validators={[VALIDATOR_MINLENGTH(6)]}
-                     errorText="Please enter a valid password, at least 6 characters."
+                     id="name"
+                     initialValue={user ? user.name : ''}
+                     initialValid={!!user}
+                     type="text"
+                     placeholder="User Name"
+                     validators={[VALIDATOR_REQUIRE()]}
+                     errorText="Please enter user's name."
                      onInput={inputHandler}
                   />
-               </form>
+                  {!props.admin && (
+                     <select ref={role} className="custom-select">
+                        <option defaultValue value={user ? user.role : 'admin'}>
+                           {user ? user.role : 'admin'}
+                        </option>
+                        <option
+                           value={
+                              user
+                                 ? user.role === 'admin'
+                                    ? 'user'
+                                    : 'admin'
+                                 : 'user'
+                           }
+                        >
+                           {user
+                              ? user.role === 'admin'
+                                 ? 'user'
+                                 : 'admin'
+                              : 'user'}
+                        </option>
+                     </select>
+                  )}
+                  {/* this form tag for disabling autoComplete attribute in Inputs  */}
+                  <form>
+                     <Input
+                        element="input"
+                        id="email"
+                        initialValue={user ? user.email : ''}
+                        initialValid={!!user}
+                        type="email"
+                        placeholder="E-Mail"
+                        validators={[VALIDATOR_EMAIL()]}
+                        errorText="Please enter a valid email address."
+                        onInput={inputHandler}
+                     />
+                  </form>
+                  {!user && (
+                     <form>
+                        <Input
+                           element="input"
+                           id="password"
+                           type="password"
+                           placeholder="Password"
+                           validators={[VALIDATOR_MINLENGTH(6)]}
+                           errorText="Please enter a valid password, at least 6 characters."
+                           onInput={inputHandler}
+                        />
+                     </form>
+                  )}
+                  <div style={{ textAlign: 'center' }}>
+                     <Button
+                        type="button"
+                        onClick={authSubmitHandler}
+                        disabled={!formState.isValid}
+                     >
+                        {props.user ? 'Update User' : 'Add User'}
+                     </Button>
+                  </div>
+               </React.Fragment>
+            ) : (
+               <h5>Sorry, you must be an Admin to have this options.</h5>
             )}
-            <div style={{ textAlign: 'center' }}>
-               <Button
-                  type="button"
-                  onClick={authSubmitHandler}
-                  disabled={!formState.isValid}
-               >
-                  {props.user ? 'Update User' : 'Add User'}
-               </Button>
-            </div>
             {/* </form> */}
          </div>
       </React.Fragment>

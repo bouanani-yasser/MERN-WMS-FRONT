@@ -49,20 +49,26 @@ const UsersList = (props) => {
             <div className="users-list">
                <h5>Users List</h5>
                <hr style={{ width: '100%' }} />
-               {isLoading && <LoadingSpinner asOverlay />}
-               {usersList.length === 0 && (
-                  <h5>You don't have any users yet .</h5>
+               {auth.userRole === 'admin' ? (
+                  <React.Fragment>
+                     {isLoading && <LoadingSpinner asOverlay />}
+                     {usersList.length === 0 && (
+                        <h5>You don't have any users yet .</h5>
+                     )}
+                     {usersList.map((user, index) => (
+                        <ListItem
+                           key={index}
+                           user={user}
+                           setShow={setShowDeleteModal}
+                           setDeletedUserId={setDeletedUserId}
+                           fetchUsersList={fetchUsersList}
+                           id={user.id}
+                        />
+                     ))}
+                  </React.Fragment>
+               ) : (
+                  <h5>Sorry, you must be an Admin to have this options.</h5>
                )}
-               {usersList.map((user, index) => (
-                  <ListItem
-                     key={index}
-                     user={user}
-                     setShow={setShowDeleteModal}
-                     setDeletedUserId={setDeletedUserId}
-                     fetchUsersList={fetchUsersList}
-                     id={user.id}
-                  />
-               ))}
             </div>
          )}
       </React.Fragment>
