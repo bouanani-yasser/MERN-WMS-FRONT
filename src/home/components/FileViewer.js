@@ -13,6 +13,8 @@ const FileViewer = (props) => {
    const [showModifyModal, setShowModifyModal] = useState(false);
    const Node = useRef();
    const pareNode = useRef();
+   const strPickerRef = useRef();
+   const btnStr = useRef();
 
    useEffect(() => {
       document.addEventListener('mousedown', handleClick, false);
@@ -36,7 +38,7 @@ const FileViewer = (props) => {
       const id = event.target.parentElement.parentElement.dataset.id;
       setDocId(id);
       const file = props.files.find((file) => file.id === id);
-      if (file) props.setFields(file.structure);
+      if (file) props.setFields(file.description);
       const pareCor = pareNode.current.getBoundingClientRect();
       const cor = event.target.getBoundingClientRect();
       let X = cor.left - 50;
@@ -78,6 +80,19 @@ const FileViewer = (props) => {
       props.removeItemHandler(docId);
    };
 
+   const strHandler = (event) => {
+      let str;
+      if (event.target.files && event.target.files.length === 1) {
+         str = event.target.files[0];
+         btnStr.current.textContent = str.name;
+      }
+      props.onInput('str', str);
+   };
+
+   const pickStrHandler = async () => {
+      strPickerRef.current.click();
+   };
+
    return (
       <div className="files-viewer" ref={pareNode}>
          <ConfModal
@@ -94,6 +109,24 @@ const FileViewer = (props) => {
             }}
          >
             <div className="upload-modal">
+               <input
+                  name="str"
+                  ref={strPickerRef}
+                  style={{ display: 'none' }}
+                  type="file"
+                  // accept=".xml,.json"
+                  onChange={strHandler}
+               />
+
+               <button
+                  className="btn btn-warning"
+                  style={{ fontWeight: '600' }}
+                  ref={btnStr}
+                  type="button"
+                  onClick={pickStrHandler}
+               >
+                  New Structure
+               </button>
                <FileStructure
                   fields={props.fields}
                   fieldsChange={props.fieldsChange}

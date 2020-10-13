@@ -13,7 +13,7 @@ const Banner = (props) => (
             <span>
                <img src={up} alt="yes" />
             </span>
-            upload files & describe their content
+            Upload files & describe their content
          </li>
          <li>
             <span>

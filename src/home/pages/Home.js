@@ -35,6 +35,10 @@ const Home = () => {
             value: null,
             isValid: false,
          },
+         str: {
+            value: null,
+            isValid: true,
+         },
       },
       false
    );
@@ -104,8 +108,10 @@ const Home = () => {
       event.preventDefault();
       setIsUploading(true);
       const formData = new FormData();
-      formData.append('file', formState.inputs.file.value);
-      formData.append('str', JSON.stringify(fields));
+      formData.append('doc', formState.inputs.file.value);
+      formState.inputs.str &&
+         formData.append('str', formState.inputs.str.value);
+      formData.append('desc', JSON.stringify(fields));
       setTimeout(() => {
          axios
             .post(`${process.env.REACT_APP_BACKEND_URL}docs/upload`, formData, {
@@ -138,11 +144,15 @@ const Home = () => {
    };
 
    const updateHandler = (docId) => {
+      const formData = new FormData();
+      formState.inputs.str &&
+         formData.append('str', formState.inputs.str.value);
+      formData.append('desc', JSON.stringify(fields));
       setTimeout(() => {
          axios
             .patch(
                `${process.env.REACT_APP_BACKEND_URL}docs/update/${docId}`,
-               { str: JSON.stringify(fields) },
+               formData,
                {
                   headers: {
                      Authorization: 'Bearer ' + auth.token,
@@ -236,6 +246,7 @@ const Home = () => {
             </div>
             <main className="wms-main">
                <FileViewer
+                  onInput={inputHandler}
                   removeItemHandler={removeItemHandler}
                   downloadItemHandler={downloadItemHandler}
                   updateHandler={updateHandler}

@@ -11,6 +11,8 @@ const FileUpload = (props) => {
    const [isValid, setIsValid] = useState(false);
 
    const filePickerRef = useRef();
+   const strPickerRef = useRef();
+   const btnStr = useRef();
 
    useEffect(() => {
       if (!file) {
@@ -38,6 +40,18 @@ const FileUpload = (props) => {
       props.onInput(props.id, pickedFile, fileIsValid);
    };
 
+   const strHandler = (event) => {
+      let str;
+      if (event.target.files && event.target.files.length === 1) {
+         str = event.target.files[0];
+         btnStr.current.textContent = str.name;
+      }
+      props.onInput('str', str);
+   };
+
+   const pickStrHandler = async () => {
+      strPickerRef.current.click();
+   };
    const pickFileHandler = async () => {
       filePickerRef.current.click();
    };
@@ -58,12 +72,11 @@ const FileUpload = (props) => {
                ref={filePickerRef}
                style={{ display: 'none' }}
                type="file"
-               // accept=".jpg,.png,.jpeg"
                onChange={pickedHandler}
             />
 
             <Button type="button" onClick={pickFileHandler}>
-               PICK FILE
+               Pick File
             </Button>
             {!previewUrl ? (
                <p style={{ margin: '20px' }}>Please pick a file</p>
@@ -73,6 +86,24 @@ const FileUpload = (props) => {
                </div>
             )}
 
+            <input
+               name="str"
+               ref={strPickerRef}
+               style={{ display: 'none' }}
+               type="file"
+               // accept=".xml,.json"
+               onChange={strHandler}
+            />
+
+            <button
+               className="btn btn-warning"
+               style={{ fontWeight: '600' }}
+               ref={btnStr}
+               type="button"
+               onClick={pickStrHandler}
+            >
+               Add Structure
+            </button>
             <FileStructure
                fields={props.fields}
                fieldsChange={props.fieldsChange}
