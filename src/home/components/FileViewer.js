@@ -38,7 +38,7 @@ const FileViewer = (props) => {
       const id = event.target.parentElement.parentElement.dataset.id;
       setDocId(id);
       const file = props.files.find((file) => file.id === id);
-      if (file) props.setFields(file.description);
+      if (file) props.setFields(JSON.parse(file.description));
       const pareCor = pareNode.current.getBoundingClientRect();
       const cor = event.target.getBoundingClientRect();
       let X = cor.left - 50;

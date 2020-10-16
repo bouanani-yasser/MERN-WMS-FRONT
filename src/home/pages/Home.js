@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 
 import FileViewer from '../components/FileViewer';
 import Search from '../components/Search';
@@ -23,7 +23,6 @@ const Home = () => {
    const [fields, setFields] = useState(fieldsState);
    const [data, setData] = useState([]);
    const [query, setQuery] = useState();
-   const [reload, setReload] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [showDashboard, setShowDashboard] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
@@ -43,36 +42,32 @@ const Home = () => {
       false
    );
 
+   const fetchData = useCallback(async () => {
+      try {
+         if (auth.userId && auth.userRole) {
+            const result = await axios(
+               `${process.env.REACT_APP_BACKEND_URL}docs/list/${auth.userId}`
+            );
+            setData(result.data.Docs);
+            // console.log('docs', result.data.Docs);
+            setIsLoading(false);
+         }
+      } catch (err) {
+         console.log('data' + err);
+         setIsLoading(false);
+         setError(err);
+      }
+   }, [auth]);
    useEffect(() => {
-      const fetchData = async () => {
-         setIsLoading(true);
-         setTimeout(async () => {
-            try {
-               if (auth.userId && auth.userRole) {
-                  const result = await axios(
-                     `${process.env.REACT_APP_BACKEND_URL}docs/list/${auth.userId}`
-                  );
-                  setData(result.data.Docs);
-                  // console.log('docs', result.data.Docs);
-                  setIsLoading(false);
-               }
-            } catch (err) {
-               console.log('data' + err);
-               setIsLoading(false);
-               setError(err);
-            }
-         }, 1000);
-      };
-
+      setIsLoading(true);
       fetchData();
-   }, [reload, auth]);
+   }, [fetchData]);
 
    const onChangeSearchHandler = async (event) => {
-      // setIsLoading(true);
       let searchQuery = event.target.value;
       setQuery(searchQuery);
       if (!searchQuery) {
-         setReload((prev) => !prev);
+         fetchData();
          return;
       }
       try {
@@ -84,7 +79,6 @@ const Home = () => {
          console.log('err ' + err);
          setError(err);
       }
-      // setIsLoading(false);
    };
 
    const onChangeHandler = (event, index, type) => {
@@ -122,7 +116,7 @@ const Home = () => {
             .then(function (response) {
                setIsUploading(false);
                cleanModel();
-               setReload((prev) => !prev);
+               fetchData();
             })
             .catch(function (error) {
                setIsUploading(false);
@@ -160,7 +154,7 @@ const Home = () => {
                }
             )
             .then(function (response) {
-               setReload((prev) => !prev);
+               fetchData();
             })
             .catch(function (error) {
                setError(error);
@@ -180,7 +174,7 @@ const Home = () => {
                },
             }
          );
-         setReload((prev) => !prev);
+         fetchData();
          setIsLoading(false);
       } catch (err) {
          console.log('data' + err);
