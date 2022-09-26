@@ -40,18 +40,18 @@ const FileUpload = (props) => {
       props.onInput(props.id, pickedFile, fileIsValid);
    };
 
-   const strHandler = (event) => {
-      let str;
-      if (event.target.files && event.target.files.length === 1) {
-         str = event.target.files[0];
-         btnStr.current.textContent = str.name;
-      }
-      props.onInput('str', str);
-   };
+   // const strHandler = (event) => {
+   //    let str;
+   //    if (event.target.files && event.target.files.length === 1) {
+   //       str = event.target.files[0];
+   //       btnStr.current.textContent = str.name;
+   //    }
+   //    props.onInput('str', str);
+   // };
 
-   const pickStrHandler = async () => {
-      strPickerRef.current.click();
-   };
+   // const pickStrHandler = async () => {
+   //    strPickerRef.current.click();
+   // };
    const pickFileHandler = async () => {
       filePickerRef.current.click();
    };
@@ -86,7 +86,7 @@ const FileUpload = (props) => {
                </div>
             )}
 
-            <input
+            {/* <input
                name="str"
                ref={strPickerRef}
                style={{ display: 'none' }}
@@ -103,7 +103,7 @@ const FileUpload = (props) => {
                onClick={pickStrHandler}
             >
                Add Structure
-            </button>
+            </button> */}
             <FileStructure
                fields={props.fields}
                fieldsChange={props.fieldsChange}

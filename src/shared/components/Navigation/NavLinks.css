@@ -28,6 +28,7 @@
 }
 
 .auth-links li a {
+   min-width: 90px;
    text-decoration: none;
    color: #fff;
    background-color: #03907c;
