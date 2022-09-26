@@ -11,8 +11,8 @@ const FileUpload = (props) => {
    const [isValid, setIsValid] = useState(false);
 
    const filePickerRef = useRef();
-   const strPickerRef = useRef();
-   const btnStr = useRef();
+   // const strPickerRef = useRef();
+   // const btnStr = useRef();
 
    useEffect(() => {
       if (!file) {

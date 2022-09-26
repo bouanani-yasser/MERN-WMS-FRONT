@@ -27,7 +27,7 @@ const Banner = (props) => {
       });
       gsap.from(text.current, { y: 50, scale: 1.3 });
       gsap.from(btn.current, { y: -50, scale: 0 });
-   }, []);
+   }, [q, btn, text]);
 
    return (
       <div className="banner">
