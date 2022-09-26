@@ -35,7 +35,7 @@ const Banner = (props) => {
             <img className="hero-icon excel" src={excel} alt="excel" />
             <img className="hero-icon txt" src={txt} alt="txt" />
             <img className="hero-icon rar" src={rar} alt="rar" />
-            <img className="hero-icon photo" src={photo} alt="photo" />
+            <img className="hero-icon photo" src={photo} alt="ph" />
             <img className="hero-icon word" src={word} alt="word" />
             <img className="hero-icon pdf" src={pdf} alt="pdf" />
             <img className="hero-icon audio" src={audio} alt="audio" />
